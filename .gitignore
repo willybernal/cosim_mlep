@@ -6,6 +6,31 @@ bin-release/
 # Other files and folders
 .settings/
 
+# EnergyPlus outputs
+Output/
+
+.mexa64
+
+.err
+.eio
+.eso
+.bnd
+.audit
+.end
+.mdd
+.shd
+.sql
+.csv
+.log
+socket.cfg
+utilSocket.log
+.idd
+.ini
+.epw
+.htm
+.mtd
+
+
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.

@@ -10,6 +10,9 @@ bin-release/
 Output/
 
 .mexa64
+.mex*
+
+.6
 
 .err
 .eio

@@ -12,9 +12,13 @@ addpath(fullfile(pathstr,'Source'));
 % Images
 addpath(fullfile(pathstr,'Image'));
 
+
 % Generate Mex 
-mex(fullfile(pathstr,'Source','feedinput.c'));
-mex(fullfile(pathstr,'Source','mlepCosim.c'));
+cd(fullfile(pathstr,'Source'));
+mex(fullfile(pathstr,'Source','feedinput.c'),'-v');
+mex(fullfile(pathstr,'Source','mlepCosim.c'),'-v');
+
+cd(pathstr);
 
 disp('================================');
 disp('INSTALLATION COMPLETED!!!');

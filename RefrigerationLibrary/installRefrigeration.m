@@ -21,6 +21,7 @@ mex(fullfile(pathstr,'Source','mlepCosim.c'),'-v');
 cd(pathstr);
 
 disp('================================');
+disp('REFRIGERATION PROJECT');
 disp('INSTALLATION COMPLETED!!!');
 disp('Install everytime Matlab opens.');
 disp('================================');

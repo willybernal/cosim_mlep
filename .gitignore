@@ -7,31 +7,36 @@ bin-release/
 .settings/
 
 # EnergyPlus outputs
-Output/
+Output/*
+Output
 
-.mexa64
-.mex*
+# Code Generation
+*.mexa64
+*.mex*
+*.mexmaci64
 
-.6
-
-.err
-.eio
-.eso
-.bnd
-.audit
-.end
-.mdd
-.shd
-.sql
-.csv
-.log
+# MLE+
+*.6
 socket.cfg
 utilSocket.log
-.idd
-.ini
-.epw
-.htm
-.mtd
+*.log
+
+# E+
+*.err
+*.eio
+*.eso
+*.bnd
+*.audit
+*.end
+*.mdd
+*.shd
+*.sql
+*.csv
+*.idd
+*.ini
+*.epw
+*.htm
+*.mtd
 
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`

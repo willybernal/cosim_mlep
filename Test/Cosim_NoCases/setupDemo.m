@@ -24,4 +24,6 @@ fclose(fid);
 %% Clear up repo 
 system('rm -r eplus* *.epw in.idf mlep.log socket* sql* util* Output *.idd *.ini *grt_rtw slprj *.mexa64 *~');
 
+%% Open simulink
+open('super.slx');
 

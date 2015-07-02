@@ -306,7 +306,7 @@ static void mdlOutputs(SimStruct *S, int_T tid)
         values[i] = *uPtrs[i];
     }
 
-    values[0] = 0;
+    /* values[0] = 0; */
     
     char* test = mlepEncodeRealData(2, 0, (kStep-1)*deltaT, values, 1);
     

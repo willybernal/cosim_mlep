@@ -15186,6 +15186,9 @@ Output:Variable,Zone:Refrigeration,Zone Mean Air Temperature,timestep;
 Output:Variable,Whole building,Facility Total Building Electric Demand Power,timestep; !- HVAC Average [W]
 Output:Variable,Whole building,Facility Total HVAC Electric Demand Power,timestep; !- HVAC Average [W]
 
+Output:Variable,ZONE:REFRIGERATION,Zone Other Equipment Lost Heat Rate,timestep; !- HVAC Average [W]
+Output:Variable,ZONE:REFRIGERATION,Zone Other Equipment Total Heating Rate,timestep; !- HVAC Average [W]
+
 Output:SQLite, Simple;
 
   ExternalInterface,
@@ -15194,18 +15197,18 @@ Output:SQLite, Simple;
   ExternalInterface:Schedule,
     RefridSch,               !- Name
     Any Number,              !- Schedule Type Limits Name
-    0;                       !- Initial Value
+    -0.7;                       !- Initial Value
 
   OtherEquipment,
     OthEq 1,                 !- Name
     Zone:Refrigeration,      !- Zone or ZoneList Name
-    RefridSch,               !- Schedule Name
+    RefridSch,               !- Schedule Name Always On/Available
     EquipmentLevel,          !- Design Level Calculation Method
-    726,                     !- Design Level {W}
+    10000,                  !- Design Level {W}
     ,                        !- Power per Zone Floor Area {W/m2}
     ,                        !- Power per Person {W/Person}
     0,                       !- Fraction Latent
-    0.7,                     !- Fraction Radiant
+    0,                       !- Fraction Radiant
     0;                       !- Fraction Lost
 
 

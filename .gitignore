@@ -15,6 +15,9 @@ Output
 *.mex*
 *.mexmaci64
 
+# Matlab
+*.autosave
+
 # MLE+
 *.6
 socket.cfg
@@ -37,7 +40,8 @@ utilSocket.log
 *.epw
 *.htm
 *.mtd
-
+*.rdd
+in.idf
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important

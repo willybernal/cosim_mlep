@@ -1,3 +1,7 @@
+#ifdef __APPLE__
+#  define error printf
+#endif
+
 #include"mlepCreate.h"
 #include <stdio.h>
 #include <stdlib.h>

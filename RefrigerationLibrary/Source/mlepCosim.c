@@ -305,8 +305,6 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     for (i = 0; i < numInput; i++) {
         values[i] = *uPtrs[i];
     }
-
-    /* values[0] = 0; */
     
     char* test = mlepEncodeRealData(2, 0, (kStep-1)*deltaT, values, 1);
     
@@ -319,7 +317,7 @@ static void mdlOutputs(SimStruct *S, int_T tid)
 #else
         /* Break from while loop */
         ssSetErrorStatus(S,"Error Writing to Socket");
-        return;
+        /* return; */
 #endif
     }
     else

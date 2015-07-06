@@ -15204,7 +15204,7 @@ Output:SQLite, Simple;
     Zone:Refrigeration,      !- Zone or ZoneList Name
     RefridSch,               !- Schedule Name Always On/Available
     EquipmentLevel,          !- Design Level Calculation Method
-    10000,                  !- Design Level {W}
+    10000,                   !- Design Level {W}
     ,                        !- Power per Zone Floor Area {W/m2}
     ,                        !- Power per Person {W/Person}
     0,                       !- Fraction Latent

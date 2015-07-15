@@ -22,7 +22,7 @@
 #define S_FUNCTION_LEVEL 2
 
 #include "simstruc.h"
-#define DEBUG_FLAG
+/* #define DEBUG_FLAG */
 
 /* MLEP LIBRARIES */
 #include <stdio.h>

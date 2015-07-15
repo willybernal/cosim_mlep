@@ -44,16 +44,16 @@ int kStep = 1;
 
 #define PROGNAME_IDX 0
 #define PROGNAME_PARAM(S) ssGetSFcnParam(S,PROGNAME_IDX)
- 
+
 #define IDF_IDX 1
 #define IDF_PARAM(S) ssGetSFcnParam(S,IDF_IDX)
- 
+
 #define WEATHER_IDX 2
 #define WEATHER_PARAM(S) ssGetSFcnParam(S,WEATHER_IDX)
 
 #define TIMEOUT_IDX 3
 #define TIMEOUT_PARAM(S) ssGetSFcnParam(S,TIMEOUT_IDX)
- 
+
 #define SAMPLE_TIME_IDX 4
 #define SAMPLE_TIME_PARAM(S) ssGetSFcnParam(S,SAMPLE_TIME_IDX)
 
@@ -68,7 +68,7 @@ int kStep = 1;
 
 #define NPARAMS 8
 
-    
+
 /*====================*
  * S-function methods *
  *====================*/
@@ -76,81 +76,81 @@ int kStep = 1;
 
 #define MDL_CHECK_PARAMETERS
 #if defined(MDL_CHECK_PARAMETERS) && defined(MATLAB_MEX_FILE)
-  /* Function: mdlCheckParameters =============================================
-   * Abstract:
-   *    Validate our parameters to verify they are okay.
-   */
-  static void mdlCheckParameters(SimStruct *S)
-  {
-      /* Check 1stparameters: PROGNAME parameters */
-      {
-          if (!mxIsChar(PROGNAME_PARAM(S))) {
-              ssSetErrorStatus(S,"The E+ Executable (1st parameter) "
-                               "must be char");
-              return;
-          }
-      }
- 
-      /* Check 2nd parameters: IDF parameters */
-      {
-          if (!mxIsChar(IDF_PARAM(S))) {
-              ssSetErrorStatus(S,"The IDF FILE (2nd parameter) "
-                               "must be char");
-              return;
-          }
-      }
-
-      /* Check 3rd parameters: WEATHER parameters */
-      {
-          if (!mxIsChar(WEATHER_PARAM(S))) {
-              ssSetErrorStatus(S,"The WEATHER file (3rd parameter) "
-                               "must be char");
-              return;
-          }
-      }
-
-      /* Check 4th parameters: TIMEOUT parameters */
-      {
-          if (!mxIsDouble(TIMEOUT_PARAM(S))) {
-              ssSetErrorStatus(S,"The TIMEOUT (4th parameter) "
-                               "must be double");
-              return;
-          }
-      }
-      /* Check 5th parameters: SAMPLE_TIME parameters */
-      {
-          if (!mxIsDouble(SAMPLE_TIME_PARAM(S))) {
-              ssSetErrorStatus(S,"The SAMPLE_TIME (5th parameter) "
-                               "must be double");
-              return;
-          }
-      }
-      /* Check 6th parameters: NUMBER_OUTPUTS parameters */
-      {
-          if (!mxIsDouble(NUMBER_INPUTS_PARAM(S))) {
-              ssSetErrorStatus(S,"The NUMBER_INPUTS (6th parameter) "
-                               "must be double");
-              return;
-          }
-      }
-      /* Check 7th parameters: NUMBER_OUTPUTS parameters */
-      {
-          if (!mxIsDouble(NUMBER_OUTPUTS_PARAM(S))) {
-              ssSetErrorStatus(S,"The NUMBER_OUTPUTS (7th parameter) "
-                               "must be double");
-              return;
-          }
-      }
-      /* Check 8th parameters: BCVTB_PATH parameters */
-      {
-          if (!mxIsChar(BCVTB_PATH_PARAM(S))) {
-              ssSetErrorStatus(S,"The BCVTB PATH (8th parameter) "
-                               "must be char");
-              return;
-          }
-      }
-      
-  }
+/* Function: mdlCheckParameters =============================================
+ * Abstract:
+ *    Validate our parameters to verify they are okay.
+ */
+static void mdlCheckParameters(SimStruct *S)
+{
+    /* Check 1stparameters: PROGNAME parameters */
+    {
+    if (!mxIsChar(PROGNAME_PARAM(S))) {
+        ssSetErrorStatus(S,"The E+ Executable (1st parameter) "
+                "must be char");
+        return;
+    }
+    }
+    
+    /* Check 2nd parameters: IDF parameters */
+    {
+        if (!mxIsChar(IDF_PARAM(S))) {
+            ssSetErrorStatus(S,"The IDF FILE (2nd parameter) "
+                    "must be char");
+            return;
+        }
+    }
+    
+    /* Check 3rd parameters: WEATHER parameters */
+    {
+        if (!mxIsChar(WEATHER_PARAM(S))) {
+            ssSetErrorStatus(S,"The WEATHER file (3rd parameter) "
+                    "must be char");
+            return;
+        }
+    }
+    
+    /* Check 4th parameters: TIMEOUT parameters */
+    {
+        if (!mxIsDouble(TIMEOUT_PARAM(S))) {
+            ssSetErrorStatus(S,"The TIMEOUT (4th parameter) "
+                    "must be double");
+            return;
+        }
+    }
+    /* Check 5th parameters: SAMPLE_TIME parameters */
+    {
+        if (!mxIsDouble(SAMPLE_TIME_PARAM(S))) {
+            ssSetErrorStatus(S,"The SAMPLE_TIME (5th parameter) "
+                    "must be double");
+            return;
+        }
+    }
+    /* Check 6th parameters: NUMBER_OUTPUTS parameters */
+    {
+        if (!mxIsDouble(NUMBER_INPUTS_PARAM(S))) {
+            ssSetErrorStatus(S,"The NUMBER_INPUTS (6th parameter) "
+                    "must be double");
+            return;
+        }
+    }
+    /* Check 7th parameters: NUMBER_OUTPUTS parameters */
+    {
+        if (!mxIsDouble(NUMBER_OUTPUTS_PARAM(S))) {
+            ssSetErrorStatus(S,"The NUMBER_OUTPUTS (7th parameter) "
+                    "must be double");
+            return;
+        }
+    }
+    /* Check 8th parameters: BCVTB_PATH parameters */
+    {
+        if (!mxIsChar(BCVTB_PATH_PARAM(S))) {
+            ssSetErrorStatus(S,"The BCVTB PATH (8th parameter) "
+                    "must be char");
+            return;
+        }
+    }
+    
+}
 #endif /* MDL_CHECK_PARAMETERS */
 
 
@@ -162,7 +162,7 @@ int kStep = 1;
  */
 static void mdlInitializeSizes(SimStruct *S)
 {
-
+    
     ssSetNumSFcnParams(S, NPARAMS);  /* Number of expected parameters */
 #if defined(MATLAB_MEX_FILE)
     if (ssGetNumSFcnParams(S) == ssGetSFcnParamsCount(S)) {
@@ -174,12 +174,12 @@ static void mdlInitializeSizes(SimStruct *S)
         return; /* Parameter mismatch will be reported by Simulink */
     }
 #endif
-
-    /* Continuous States */ 
-    ssSetNumContStates(S, 0); 
-    /* Discrete States */ 
-    ssSetNumDiscStates(S, 0); 
-
+    
+    /* Continuous States */
+    ssSetNumContStates(S, 0);
+    /* Discrete States */
+    ssSetNumDiscStates(S, 0);
+    
     /* Set Number of Input Ports */
     if (!ssSetNumInputPorts(S, 1)) return;
     /* Set Width of Input Port 0 */
@@ -195,13 +195,13 @@ static void mdlInitializeSizes(SimStruct *S)
     ssSetOutputPortWidth(S, 1, 1);
     /* Set Width of Output Port 3 - Output */
     ssSetOutputPortWidth(S, 2, *mxGetPr(NUMBER_OUTPUTS_PARAM(S)));
-
+    
     /* Set Number of Sample Times */
-    ssSetNumSampleTimes(S, 1); 
-
+    ssSetNumSampleTimes(S, 1);
+    
     ssSetSimStateCompliance(S, USE_DEFAULT_SIM_STATE);
     ssSetOptions(S, SS_OPTION_EXCEPTION_FREE_CODE);
-
+    
 }
 
 
@@ -212,12 +212,12 @@ static void mdlInitializeSizes(SimStruct *S)
  */
 static void mdlInitializeSampleTimes(SimStruct *S)
 {
-    /* Set Sample Time */    
+    /* Set Sample Time */
     ssSetSampleTime(S, 0, *mxGetPr(SAMPLE_TIME_PARAM(S)));
-    /* Set Offset */    
+    /* Set Offset */
     ssSetOffsetTime(S, 0, 0.0);
-    /* Set Sample Time Inheritance*/    
-    ssSetModelReferenceSampleTimeDefaultInheritance(S); 
+    /* Set Sample Time Inheritance*/
+    ssSetModelReferenceSampleTimeDefaultInheritance(S);
 }
 
 
@@ -231,8 +231,8 @@ static void mdlInitializeSampleTimes(SimStruct *S)
 static void mdlInitializeConditions(SimStruct *S)
 {
     /* Create arguments */
-    char_T progname_buffer[500];                /* Program Name Buffer */  
-    char_T idf_buffer[500];                     /* Idf Name Buffer  */                     
+    char_T progname_buffer[500];                /* Program Name Buffer */
+    char_T idf_buffer[500];                     /* Idf Name Buffer  */
     char_T weather_buffer[500];                 /* Weather Name Buffer */
     char_T bcvtbdir[500];                       /* BCVTB Directory */
     int timeout = *mxGetPr(TIMEOUT_PARAM(S));   /* Socket Timeout */
@@ -247,7 +247,7 @@ static void mdlInitializeConditions(SimStruct *S)
     /* printf("IDF: %s WEATHER: %s\n",idf_buffer,weather_buffer); */
     sprintf(arguments, "%s %s",idf_buffer,weather_buffer);
     printf("ARGUMENTS: %s\n",arguments);
-
+    
     /* Call mlepCreate */
     a = mlepCreate(progname_buffer,arguments,timeout,port,host, bcvtbdir, configfile, env, execcmd);
     /* Set Variables */
@@ -270,9 +270,9 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     int deltaT = *mxGetPr(SAMPLE_TIME_PARAM(S));                /* Sample Time for S-function (in seconds) */
     int n = 0;
     int i = 0;
-
+    
     UNUSED_ARG(tid); /* not used in single tasking mode */
-
+    
     /* Read Packet from Co-simulation Instance*/
     n = read(a.simsock,com_buffer,999);
     /* printf("N READ: %d\n",n); */
@@ -289,11 +289,11 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     }
     else
     {
-        decodedpacket = mlepDecodePacket(com_buffer); 
+        decodedpacket = mlepDecodePacket(com_buffer);
     }
     
     /* Terminate if got flag != 0 */
-    if (decodedpacket.flag != 0){ 
+    if (decodedpacket.flag != 0){
 #if !defined(MATLAB_MEX_FILE)
         printf("Flag Not 0");
 #else
@@ -324,7 +324,7 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     else
     {
     }
-
+    
     /*============ OUTPUTS ============*/
     int temp = 0;
     while(temp < numOutput){
@@ -333,9 +333,9 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     }
     
     /* E+ Time */
-	time[0] = decodedpacket.timeValue; /* (real_T)taskTime; */
+    time[0] = decodedpacket.timeValue; /* (real_T)taskTime; */
     /* Flag */
-	flag[0] = decodedpacket.flag;
+    flag[0] = decodedpacket.flag;
     
     /* Read Packet from Co-simulation Instance*/
     kStep++;
@@ -347,6 +347,19 @@ static void mdlOutputs(SimStruct *S, int_T tid)
  */
 static void mdlTerminate(SimStruct *S)
 {
+    int n;
+    char buffer[1000];
+    sprintf(buffer, "2 0 -1\n");
+    /* Write Packet to Co-Simulation Instance */
+    n = send(a.simsock, buffer, strlen(buffer), 0);
+    printf("Finished Co-Simulation");
+
+#if !defined(MATLAB_MEX_FILE)
+    /* return; */
+    return;
+#else
+    /* return; */
+#endif
     UNUSED_ARG(S); /* unused input argument */
 }
 

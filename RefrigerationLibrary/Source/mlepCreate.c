@@ -15,7 +15,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include<sys/time.h>
-int debug = 0;
+/* #define DEBUG_FLAG */
 
 #define MYPORT 0
 /* how many pending connections queue will hold */
@@ -59,9 +59,9 @@ char* mlepEncodeRealData(int VERNUMBER, int flag, float currentTime, float value
     /* check flag 0 is good */
     if (flag == 0)
     {
-        if (debug){
-            printf("INSIDE ENCODE\n");
-        }
+#if defined(DEBUG_FLAG)
+        printf("INSIDE ENCODE\n");
+#endif
         /* Create string to add values */
         sprintf(buffer, "%d 0 %d 0 0 %20.15e ",VERNUMBER, numvalues, currentTime);
         /* for each real input */
@@ -131,9 +131,9 @@ struct decodedPacket mlepDecodePacket(char readpacket[])
     float realvalues[100];
     sscanf(readpacket,"%d %d %d %d %d %f", &v, &flag, &numvalues,&dummy1,&dummy2, &timevalue);
     
-    if (debug){
-        printf("Num Values: %d\n",numvalues);
-    }
+#if defined(DEBUG_FLAG)
+    printf("Num Values: %d\n",numvalues);
+#endif
     
     /* Read First */
     token = strtok(readpacket, s);
@@ -151,26 +151,41 @@ struct decodedPacket mlepDecodePacket(char readpacket[])
         token = strtok(NULL, s);
     }
     
-    if (debug){
-        printf("Creating DECODEDPACKET\n");
-    }
+#if defined(DEBUG_FLAG)
+    printf("CREATING DECODEPACKET\n");
+#endif
+    
     /* Create DecodedPackage */
     decodedpacket.flag = flag;
-    if (debug){
-        printf("FLAG\n");
-    }
+#if defined(DEBUG_FLAG)
+    printf("FLAG: %d\n",decodedpacket.flag);
+#endif
+    
     decodedpacket.timeValue = timevalue;
-    if (debug){
-        printf("TIMEVALUE AA\n");
-    }
-    decodedpacket.realValue = realvalues;
-    if (debug){
-        printf("REALVALUES\n");
-    }
+#if defined(DEBUG_FLAG)
+    printf("TIMEVALUE: %f\n",decodedpacket.timeValue);
+#endif
+    
     decodedpacket.numValue = numvalues;
-    if (debug){
-        printf("NUMVALUE\n");
+#if defined(DEBUG_FLAG)
+    printf("NUMVALUE: %d\n",decodedpacket.numValue);
+#endif
+    
+    /* decodedpacket.realValue = realvalues; */
+    iter = 0;
+    while(iter < decodedpacket.numValue){
+        decodedpacket.realValue[iter] = realvalues[iter];
+        iter++;
     }
+#if defined(DEBUG_FLAG)
+    printf("REALVALUES\n");
+    iter = 0;
+    while(iter < decodedpacket.numValue){
+        printf("%d: %f\n",iter+1,decodedpacket.realValue[iter]);
+        iter++;
+    }
+#endif
+    
     return decodedpacket;
     /* Protocol Version 1 & 2:
      * Packet has the form:
@@ -223,9 +238,9 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
     
     struct CosimInstance cosim;
     
-    if (debug){
-        printf("Running MLEPCREATE\n");
-    }
+#if defined(DEBUG_FLAG)
+    printf("INSIDE MLEPCREATE\n");
+#endif
     configfile = "socket.cfg";
     
     struct timeval timeout;
@@ -240,9 +255,10 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
     }
     else
     {
-        if (debug){
-            printf("Server-socket() sockfd is OK...\n");
-        }
+#if defined(DEBUG_FLAG)
+        printf("Server-socket() sockfd is OK...\n");
+#endif
+        
     }
     
     
@@ -261,9 +277,9 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
     /* automatically fill with my IP */
     my_addr.sin_addr.s_addr = INADDR_ANY;
     
-    if (debug){
-        printf("Server-Using %s and port %d...\n", inet_ntoa(my_addr.sin_addr), MYPORT);
-    }
+#if defined(DEBUG_FLAG)
+    printf("Server-Using %s and port %d...\n", inet_ntoa(my_addr.sin_addr), MYPORT);
+#endif
     
     /* zero the rest of the struct */
     memset(&(my_addr.sin_zero), '\0', 8);
@@ -274,9 +290,11 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
         exit(1);
     }
     else{
-        if (debug){
-            printf("Server-bind() is OK...\n");
-        }
+        
+#if defined(DEBUG_FLAG)
+        printf("Server-bind() is OK...\n");
+#endif
+        
     }
     
     if(listen(sockfd, BACKLOG) == -1)
@@ -284,15 +302,15 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
         perror("Server-listen() error");
         exit(1);
     }
-    if (debug){
-        printf("Server-listen() is OK...Listening...\n");
-    }
+#if defined(DEBUG_FLAG)
+    printf("Server-listen() is OK...Listening...\n");
+#endif
     
     
     if (getsockname(sockfd, (struct sockaddr *)&my_addr1, &my_addr_len) == -1)
         perror("getsockname");
     else
-        cosimPort = (int)ntohs(my_addr1.sin_port);        
+        cosimPort = (int)ntohs(my_addr1.sin_port);
     
     /* Write Socket Config to file */
     char socket_config[] = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n"
@@ -325,13 +343,14 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
     }
     else
     {
-        if (debug){
-            printf("Server-accept() is OK...\n");
-        }
+#if defined(DEBUG_FLAG)
+        printf("Server-accept() is OK...\n");
+#endif
     }
-    if (debug){
-        printf("Server-new socket, new_fd is OK...\n");
-    }
+#if defined(DEBUG_FLAG)
+    printf("Server-new socket, new_fd is OK...\n");
+#endif
+    
     printf("Server: Got connection from %s\n", inet_ntoa(their_addr.sin_addr));
     
     /* Assign cosim  */

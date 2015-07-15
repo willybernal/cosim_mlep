@@ -17,6 +17,7 @@ Output
 
 # Matlab
 *.autosave
+*~
 
 # MLE+
 *.6

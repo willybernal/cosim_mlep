@@ -15,7 +15,7 @@ struct decodedPacket
 {
 	int flag;		/* co-simulation flag */
 	float timeValue;	/* Simulation timestep */
-	float *realValue;	/* Co-simulation real values */
+	float realValue[200];	/* Co-simulation real values */
 	int numValue;		/* Number of values */
 };
 

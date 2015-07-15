@@ -14,6 +14,8 @@ Output
 *.mexa64
 *.mex*
 *.mexmaci64
+slprj
+super_grt_rtw
 
 # Matlab
 *.autosave

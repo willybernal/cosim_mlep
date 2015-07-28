@@ -1,5 +1,5 @@
 /* Give S-function a name */
-#define S_FUNCTION_NAME  feedinput
+#define S_FUNCTION_NAME  writeoutput
 #define S_FUNCTION_LEVEL 2
 
 /* Include SimStruct definition and file I/O functions */
@@ -14,6 +14,8 @@
 
 
 #define NPARAMS 2
+FILE *datafile;
+char_T filename[300];                                 /* File Name */
 
 
 #define MDL_CHECK_PARAMETERS
@@ -57,8 +59,14 @@ static void mdlInitializeSizes(SimStruct *S)
     ssSetNumContStates(S, 0);
     ssSetNumDiscStates(S, 0);
 
-    if (!ssSetNumInputPorts(S, 0)) return;
+    if (!ssSetNumInputPorts(S, 1)) return;
     if (!ssSetNumOutputPorts(S, 1)) return;
+    ssSetInputPortWidth(S, 0, 1);
+    ssSetInputPortDataType(S,0,SS_DOUBLE);
+    /* Set FeedThrough to True */
+    ssSetInputPortDirectFeedThrough(S, 0, 1);
+
+    
     ssSetOutputPortWidth(S, 0, 1);
     ssSetOutputPortDataType(S,0,SS_DOUBLE);
 
@@ -88,26 +96,15 @@ static void mdlInitializeSampleTimes(SimStruct *S)
    */
   static void mdlStart(SimStruct *S)
   {
-      /*at start of model execution, open the file and store the pointer
-       *in the pwork vector */
-      void** pwork = ssGetPWork(S);
-      FILE *datafile;
-      char_T filename[300];                                 /* File Name */
+      /*at start of model execution, open the file and store the name */
       int n = mxGetString(FILE_NAME_PARAM(S), filename, 300);  /* Get param */
       
-      datafile = fopen(filename,"r");
+      datafile = fopen(filename,"w");
       if (datafile != NULL)
       {
           printf("File exists\n");
-          pwork[0] =  datafile;
       }else{
-#if !defined(MATLAB_MEX_FILE)
-        printf("File Does Not Exist");
-#else
-        /* Break from Simulink Simulation */
-        ssSetErrorStatus(S,"File Does not Exist");
-        return;
-#endif
+        printf("File Does Not Exist\n");
       }
   }
 #endif /*  MDL_START */
@@ -122,19 +119,14 @@ static void mdlInitializeSampleTimes(SimStruct *S)
 static void mdlOutputs(SimStruct *S, int_T tid)
 {
     /* get pointer to the block's output signal */
-    real_T       *y = ssGetOutputPortSignal(S,0);
-    float f;
-    
-    /*get pointer to array of pointers, where the first element is the address
-     *of the open file */
-
-    void** pwork = ssGetPWork(S);
+    InputRealPtrsType uPtrs = ssGetInputPortRealSignalPtrs(S,0);/* Input Pointers*/
+    real_T *y    = ssGetOutputPortRealSignal(S,0);              /* Output Port */
     
     /*read a floating point number and then the comma delimiter
      *store the result in y*/
-    /*fscanf(pwork[0],"%f%*c",y); */
-    fscanf(pwork[0],"%f%*c",&f); 
-    y[0] = f;
+    fprintf(datafile,"%f,",*uPtrs[0]); 
+/*     printf("A: %f\n",*uPtrs[0]); */
+    y[0] = (float)*uPtrs[0];
 }
 
 
@@ -148,11 +140,7 @@ static void mdlOutputs(SimStruct *S, int_T tid)
 static void mdlTerminate(SimStruct *S)
 {
     /*close the file */
-    void** pwork = ssGetPWork(S);
-      FILE *datafile;
-      
-      datafile = pwork[0];
-      fclose(datafile);
+	fclose(datafile);
       
 }
 

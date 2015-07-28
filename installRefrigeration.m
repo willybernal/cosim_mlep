@@ -18,6 +18,7 @@ addpath(genpath(fullfile(pathstr,'RefrigerationLibrary','bcvtb')));
 cd(fullfile(pathstr,'RefrigerationLibrary','Source'));
 mex(fullfile(pathstr,'RefrigerationLibrary','Source','feedinput.c'),'-v');
 mex(fullfile(pathstr,'RefrigerationLibrary','Source','mlepCosim.c'),'-v');
+mex(fullfile(pathstr,'RefrigerationLibrary','Source','writeoutput.c'),'-v');
 cd(pathstr);
 
 disp('                                ');

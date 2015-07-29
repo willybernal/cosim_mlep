@@ -19,6 +19,7 @@ cd(fullfile(pathstr,'RefrigerationLibrary','Source'));
 mex(fullfile(pathstr,'RefrigerationLibrary','Source','feedinput.c'),'-v');
 mex(fullfile(pathstr,'RefrigerationLibrary','Source','mlepCosim.c'),'-v');
 mex(fullfile(pathstr,'RefrigerationLibrary','Source','writeoutput.c'),'-v');
+mex(fullfile(pathstr,'RefrigerationLibrary','Source','writeresult.c'),'-v');
 cd(pathstr);
 
 disp('                                ');

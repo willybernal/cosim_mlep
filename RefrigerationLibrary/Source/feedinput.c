@@ -17,6 +17,9 @@
 
 #define NPARAMS 3
 
+/* #define DEBUG_FLAG */
+
+
 #define MDL_CHECK_PARAMETERS
 #if defined(MDL_CHECK_PARAMETERS) && defined(MATLAB_MEX_FILE)
 /* Function: mdlCheckParameters =============================================
@@ -91,12 +94,8 @@ static void mdlInitializeSizes(SimStruct *S)
     ssSetNumRWork(S,1);
     ssSetNumIWork(S,1);
     ssSetNumModes(S,0);
-
     
-    /* INT DWork Vector steps */
-    /* ssSetDWorkWidth(S,0,2); */
-    /* ssSetDWorkDataType(S,0,SS_INT8); */
-    
+    /* Set Number of Sample Times */
     ssSetNumSampleTimes(S, 1);
 }
 
@@ -128,16 +127,18 @@ static void mdlStart(SimStruct *S)
     FILE *datafile = NULL;
     char_T filename[300] = "";           /* File Name */
     
-    /* DWork Vector */
-    /* int_T *steps = (int_T*) ssGetDWork(S,0); */
-    int_T *steps1 = (int_T*) ssGetIWork(S);
-    /* int_T *numSteps = (int_T*) ssGetDWork(S,1); */
-    /* steps[0] = 0; */
-    steps1[0] = 0;
+    /* IWork Vector */
+    int_T *step = (int_T*) ssGetIWork(S);
+    /* Init to 0 */
+    step[0] = 0;
+    /* Set Filename */
     int n = mxGetString(FILE_NAME_PARAM(S), filename, 300);  /* Get param */
+    /* Set number of steps */
     int numSteps = (int)*mxGetPr(FEED_STEP_PARAM(S))/(int)*mxGetPr(TIME_STEP_PARAM(S));
-
-    printf("INIT: File: %s NumSteps: %d Steps: %d\n",filename,numSteps,steps1[0]);
+    
+#if defined(DEBUG_FLAG)
+    printf("INIT: File: %s NumSteps: %d Steps: %d\n",filename,numSteps,step[0]);
+#endif
     
     datafile = fopen(filename,"r");
     if (datafile != NULL)
@@ -146,6 +147,7 @@ static void mdlStart(SimStruct *S)
     }else{
 #if !defined(MATLAB_MEX_FILE)
         printf("File Does Not Exist");
+        exit(0);
 #else
         /* Break from Simulink Simulation */
         ssSetErrorStatus(S,"File Does not Exist");
@@ -169,35 +171,43 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     /*get pointer to array of pointers, where the first element is the address
      *of the open file */
     void** pwork = ssGetPWork(S);
-        
     /* get pointer to the block's output signal */
     real_T *y = ssGetOutputPortSignal(S,0);
-    /* DWork Vector */
-    /* int_T *steps = (int_T*) ssGetDWork(S,0); */
-    int_T *steps1 = (int_T*) ssGetIWork(S);
+    /* IWork Vector */
+    int_T *step = (int_T*) ssGetIWork(S);
+    /* RWork Vector */
+    real_T *value = (real_T*) ssGetRWork(S);
+    
     /* int_T *numSteps = (int_T*) ssGetDWork(S,1); */
     char_T filename[300];                                 /* File Name */
     int numSteps = (int)*mxGetPr(FEED_STEP_PARAM(S))/(int)*mxGetPr(TIME_STEP_PARAM(S));
     int n;
     float v = 0;
+    /* set filename */
     n = mxGetString(FILE_NAME_PARAM(S), filename, 300);  /* Get param */
-    /* float value; */
-    printf("Filename: %s Steps: %d NumSteps: %d\n",filename,numSteps,steps1[0]);
+    
+#if defined(DEBUG_FLAG)
+    printf("Filename: %s Steps: %d NumSteps: %d\n",filename,numSteps,step[0]);
+#endif
     
     /* Check Feed Step */
-    if (steps1[0] % numSteps == 0) {
+    if (step[0] % numSteps == 0) {
         
         /*read a floating point number and then the comma delimiter */
         n = fscanf(pwork[0],"%f,",&v);
-        printf("GOT INSIDE: %s %f=============\n",filename,v);
-        y[0] = v;
-        steps1[0] = 0;
+        if (n > 0){
+            value[0] = (real_T)v;
+        }
+#if defined(DEBUG_FLAG)
+        printf("GOT INSIDE: %s %f=============\n",filename,value[0]);
+        printf("Value: %f %d\n",v,n);
+#endif
+        y[0] = value[0];
+        step[0] = 0;
     }
     else{
         /* Assign output*/
-        /*	printf("Outside %f\n",value);*/
-        y[0] = v;
-        
+        y[0] = value[0];
     }
     
 }
@@ -213,13 +223,12 @@ static void mdlOutputs(SimStruct *S, int_T tid)
 static void mdlUpdate(SimStruct *S, int_T tid)
 {
     /* DWork Vector */
-    int_T *numSteps = (int_T*) ssGetIWork(S);
-        
+    int_T *step = (int_T*) ssGetIWork(S);
+    
     /*
-     * Increment the state by the input 
+     * Increment the state by the input
      */
-    /* steps[0] += 1; */
-    numSteps[0] += 1;
+    step[0] += 1;
 }
 
 
@@ -232,12 +241,7 @@ static void mdlUpdate(SimStruct *S, int_T tid)
  */
 static void mdlTerminate(SimStruct *S)
 {
-/*     void** pwork = ssGetPWork(S); */
-/*    FILE *datafile; */
-    
-/*    datafile = pwork[0]; */
-/*    fclose(datafile); */
-    
+    /*close the file */
     if (ssGetPWork(S) != NULL) {
         FILE *fPtr;
         fPtr = (FILE *) ssGetPWorkValue(S,0);

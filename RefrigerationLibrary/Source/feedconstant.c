@@ -1,5 +1,5 @@
 /* Give S-function a name */
-#define S_FUNCTION_NAME  writeresult
+#define S_FUNCTION_NAME  feedinput
 #define S_FUNCTION_LEVEL 2
 
 /* Include SimStruct definition and file I/O functions */
@@ -12,9 +12,13 @@
 #define TIME_STEP_IDX 1
 #define TIME_STEP_PARAM(S) ssGetSFcnParam(S,TIME_STEP_IDX)
 
-#define NPARAMS 2
+#define NUM_INPUT_IDX 2
+#define NUM_INPUT_PARAM(S) ssGetSFcnParam(S,NUM_INPUT_IDX)
+
+#define NPARAMS 3
 
 /* #define DEBUG_FLAG */
+
 
 #define MDL_CHECK_PARAMETERS
 #if defined(MDL_CHECK_PARAMETERS) && defined(MATLAB_MEX_FILE)
@@ -34,12 +38,13 @@ static void mdlCheckParameters(SimStruct *S)
     }
     /* Check 2nd parameters: TIME STEP parameters */
     {
-        if (!mxIsDouble(TIME_STEP_PARAM(S))) {
-            ssSetErrorStatus(S,"The TIME STEP(2nd parameter) "
+        if (!mxIsDouble(NUM_INPUT_PARAM(S))) {
+            ssSetErrorStatus(S,"The NUM_INPUT(2nd parameter) "
                     "must be double");
             return;
         }
     }
+    
 }
 #endif /* MDL_CHECK_PARAMETERS */
 
@@ -62,20 +67,24 @@ static void mdlInitializeSizes(SimStruct *S)
     ssSetNumContStates(S, 0);
     ssSetNumDiscStates(S, 0);
     
-    if (!ssSetNumInputPorts(S, 1)) return;
-    if (!ssSetNumOutputPorts(S, 0)) return;
-    ssSetInputPortWidth(S, 0, 1);
-    ssSetInputPortDataType(S,0,SS_DOUBLE);
-    /* Set FeedThrough to True */
-    ssSetInputPortDirectFeedThrough(S, 0, 0);
+    if (!ssSetNumInputPorts(S, 0)) return;
+    if (!ssSetNumOutputPorts(S, 1)) return;
+    ssSetOutputPortWidth(S, 0, (int)*mxGetPr(NUM_INPUT_PARAM(S)));
+    ssSetOutputPortDataType(S,0,SS_DOUBLE);
+    /* Set FeedThrough to False */
+    /* ssSetInputPortDirectFeedThrough(S,0,0); */
+    
+    /* DWork Vector */
+    ssSetNumDWork(S,0);
+    /* PWork Vector */
     ssSetNumPWork(S,1);
+    ssSetNumRWork(S,DYNAMICALLY_SIZED);
+    ssSetNumIWork(S,1);
+    ssSetNumModes(S,0);
     
-    /*     ssSetOutputPortWidth(S, 0, 0); */
-    /*     ssSetOutputPortDataType(S,0,SS_DOUBLE); */
-    
+    /* Set Number of Sample Times */
     ssSetNumSampleTimes(S, 1);
 }
-
 
 /* Set sample times for the block */
 static void mdlInitializeSampleTimes(SimStruct *S)
@@ -98,6 +107,54 @@ static void mdlInitializeSampleTimes(SimStruct *S)
  */
 static void mdlStart(SimStruct *S)
 {
+    /*at start of model execution, open the file and store the pointer
+     *in the pwork vector */
+    void** pwork = ssGetPWork(S);
+    FILE *datafile = NULL;
+    char_T filename[300] = "";           /* File Name */
+    
+    /* IWork Vector */
+    int_T *numInput = (int_T*) ssGetIWork(S);
+    /* RWork Vector */
+    real_T *value = (real_T*) ssGetRWork(S);
+    /* Set Filename */
+    int n = mxGetString(FILE_NAME_PARAM(S), filename, 300);  /* Get param */
+    /* Set number of steps */
+    numInput[0] = (int)*mxGetPr(NUM_INPUT_PARAM(S));
+    
+#if defined(DEBUG_FLAG)
+    printf("INIT: File: %s NumInput: %d\n",filename,numInput[0]);
+#endif
+    
+    datafile = fopen(filename,"r");
+    if (datafile != NULL)
+    {
+        pwork[0] =  datafile;
+        float v = 0;
+        int i = 0;
+        while (i < numInput[0]){
+            /*read a floating point number and then the comma delimiter */
+            n = fscanf(pwork[0],"%f,",&v);
+            if (n > 0){
+                value[i] = (real_T)v;
+            }
+            i++;
+        }
+#if defined(DEBUG_FLAG)
+        printf("GOT INSIDE: %s %f=============\n",filename,value[0]);
+        printf("Value: %f %d\n",v,n);
+#endif
+    }else{
+#if !defined(MATLAB_MEX_FILE)
+        printf("File Does Not Exist");
+        exit(0);
+#else
+        /* Break from Simulink Simulation */
+        ssSetErrorStatus(S,"File Does not Exist");
+        return;
+#endif
+    }
+    
 }
 #endif /*  MDL_START */
 
@@ -110,8 +167,33 @@ static void mdlStart(SimStruct *S)
  */
 static void mdlOutputs(SimStruct *S, int_T tid)
 {
+    
+    /*get pointer to array of pointers, where the first element is the address
+     *of the open file */
+    void** pwork = ssGetPWork(S);
+    /* get pointer to the block's output signal */
+    real_T *y = ssGetOutputPortSignal(S,0);
+    /* IWork Vector */
+    int_T *numInput = (int_T*) ssGetIWork(S);
+    /* RWork Vector */
+    real_T *value = (real_T*) ssGetRWork(S);
+    
+    /* int_T *numSteps = (int_T*) ssGetDWork(S,1); */
+    char_T filename[300];                                 /* File Name */
+    /* set filename */
+    int n = mxGetString(FILE_NAME_PARAM(S), filename, 300);  /* Get param */
+    
+#if defined(DEBUG_FLAG)
+    printf("Filename: %s NumInput: %d\n",filename,numInput[0]);
+#endif
+    
+    int i = 0;
+    while (i < value[0]){
+        /* Assign output*/
+        y[i] = i+1;
+        i++;
+    }    
 }
-
 
 
 /* Function: mdlTerminate =====================================================
@@ -122,30 +204,6 @@ static void mdlOutputs(SimStruct *S, int_T tid)
  */
 static void mdlTerminate(SimStruct *S)
 {
-    /*at start of model execution, open the file and store the pointer
-     *in the pwork vector */
-    void** pwork = ssGetPWork(S);
-    FILE *datafile = NULL;
-    char_T filename[300] = "";           /* File Name */
-    
-    /*at start of model execution, open the file and store the name */
-    int n = mxGetString(FILE_NAME_PARAM(S), filename, 300);  /* Get param */
-    /* get pointer to the block's output signal */
-    InputRealPtrsType uPtrs = ssGetInputPortRealSignalPtrs(S,0);/* Input Pointers*/
-    
-    datafile = fopen(filename,"w");
-    if (datafile != NULL)
-    {
-        pwork[0] = datafile;
-#if defined(DEBUG_FLAG)
-        printf("File exists\n");
-#endif
-    }else{
-        printf("File Does Not Exist\n");
-    }
-    
-    fprintf(datafile,"%f",*uPtrs[0]);
-    
     /*close the file */
     if (ssGetPWork(S) != NULL) {
         FILE *fPtr;

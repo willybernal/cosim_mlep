@@ -16,8 +16,11 @@ input.time=t;
 input.signals.values=Tevl;
 input.signals.dimensions=1;
 
+constant = [12,15,3*10^5];
+
 % fid = fopen( 'input.txt', 'w+');
 csvwrite('input.txt',Tevl);
+csvwrite('constant.txt',constant);
 % fclose(fid);
 
 %% Clear up repo 

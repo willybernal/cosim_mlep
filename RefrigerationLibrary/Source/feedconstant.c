@@ -1,5 +1,5 @@
 /* Give S-function a name */
-#define S_FUNCTION_NAME  feedinput
+#define S_FUNCTION_NAME  feedconstant
 #define S_FUNCTION_LEVEL 2
 
 /* Include SimStruct definition and file I/O functions */
@@ -78,7 +78,7 @@ static void mdlInitializeSizes(SimStruct *S)
     ssSetNumDWork(S,0);
     /* PWork Vector */
     ssSetNumPWork(S,1);
-    ssSetNumRWork(S,DYNAMICALLY_SIZED);
+    ssSetNumRWork(S,(int)*mxGetPr(NUM_INPUT_PARAM(S)));
     ssSetNumIWork(S,1);
     ssSetNumModes(S,0);
     
@@ -137,13 +137,12 @@ static void mdlStart(SimStruct *S)
             n = fscanf(pwork[0],"%f,",&v);
             if (n > 0){
                 value[i] = (real_T)v;
+#if defined(DEBUG_FLAG)
+                printf("Value: %f\n",value[i]);
+#endif
             }
             i++;
         }
-#if defined(DEBUG_FLAG)
-        printf("GOT INSIDE: %s %f=============\n",filename,value[0]);
-        printf("Value: %f %d\n",v,n);
-#endif
     }else{
 #if !defined(MATLAB_MEX_FILE)
         printf("File Does Not Exist");
@@ -188,9 +187,9 @@ static void mdlOutputs(SimStruct *S, int_T tid)
 #endif
     
     int i = 0;
-    while (i < value[0]){
+    while (i < numInput[0]){
         /* Assign output*/
-        y[i] = i+1;
+        y[i] = value[i];
         i++;
     }    
 }

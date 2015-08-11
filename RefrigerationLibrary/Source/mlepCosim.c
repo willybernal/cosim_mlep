@@ -36,7 +36,7 @@ int port = 0;
 char host[100] = "";
 /* char bcvtbdir[300] = "/home/avenger/Documents/Git/mlep_v2.0/MLE+/bcvtb"; */
 char configfile[100] = "socket.cfg";
-char env[1000] = "/home/avenger/Documents/Git/mlep_v2.0/MLE+/bcvtb";
+char env[1000] = "/home/avenger/Documents/git/mlep_v2.0/MLE+/bcvtb";
 char execcmd[1000] = "";
 int kStep = 1;
 
@@ -204,8 +204,6 @@ static void mdlInitializeSizes(SimStruct *S)
     
 }
 
-
-
 /* Function: mdlInitializeSampleTimes =========================================
  * Abstract:
  *    Specifiy that we inherit our sample time from the driving block.
@@ -246,7 +244,10 @@ static void mdlInitializeConditions(SimStruct *S)
     /* Assign Arguments */
     /* printf("IDF: %s WEATHER: %s\n",idf_buffer,weather_buffer); */
     sprintf(arguments, "%s %s",idf_buffer,weather_buffer);
+#if defined(DEBUG_FLAG)
     printf("ARGUMENTS: %s\n",arguments);
+    system("echo ARGUMENTS SET >debug.log");
+#endif
     
     /* Call mlepCreate */
     a = mlepCreate(progname_buffer,arguments,timeout,port,host, bcvtbdir, configfile, env, execcmd);
@@ -283,9 +284,13 @@ static void mdlOutputs(SimStruct *S, int_T tid)
         perror("Error reading from socket");
         exit(1);
 #else
-        ssSetErrorStatus(S,"Reading Erorr");
+        ssSetErrorStatus(S,"Error reading from socket");
         return;
 #endif
+#if defined(DEBUG_FLAG)
+        system("echo Error reading from socket >> debug.log");
+#endif
+        
     }
     else
     {
@@ -301,6 +306,10 @@ static void mdlOutputs(SimStruct *S, int_T tid)
         ssSetErrorStatus(S,"Flag not 0");
         return;
 #endif
+#if defined(DEBUG_FLAG)
+        system("echo Flag not 0>>debug.log");
+#endif
+
     }
     /*============ INPUTS ============*/
     for (i = 0; i < numInput; i++) {
@@ -313,6 +322,7 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     n = send(a.simsock, test, strlen(test), 0);
     if (n<0)
     {
+        
 #if !defined(MATLAB_MEX_FILE)
         printf("Error Writing to Socket");
 #else
@@ -320,6 +330,10 @@ static void mdlOutputs(SimStruct *S, int_T tid)
         ssSetErrorStatus(S,"Error Writing to Socket");
         /* return; */
 #endif
+#if defined(DEBUG_FLAG)
+        system("echo Error Writing to Socket.>>debug.log");
+#endif
+        
     }
     else
     {
@@ -360,6 +374,11 @@ static void mdlTerminate(SimStruct *S)
 #else
     /* return; */
 #endif
+    
+#if defined(DEBUG_FLAG)
+        system("echo Terminated.>>debug.log");
+#endif
+        
     UNUSED_ARG(S); /* unused input argument */
 }
 

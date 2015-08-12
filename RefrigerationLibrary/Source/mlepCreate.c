@@ -89,8 +89,6 @@ char* mlepEncodeRealData(int VERNUMBER, int flag, float currentTime, float value
         sprintf(new_buffer, "%d %d",VERNUMBER, flag);
     }
 
-    system("echo Leaving Encode Data >> debug.log");
-
     return new_buffer;
 }
 
@@ -154,7 +152,9 @@ struct decodedPacket mlepDecodePacket(char readpacket[])
     sscanf(token, "%d", &version);
 
     if (version != 2){
+#if defined(DEBUG_FLAG)
         system("echo Not Right Version >> debug.log");
+#endif
         decodedpacket.flag = 1;
         return decodedpacket;
     }

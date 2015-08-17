@@ -27,14 +27,12 @@ Building,
     25,                      !- Maximum Number of Warmup Days
     ;                        !- Minimum Number of Warmup Days
 
-
 !-   ===========  ALL OBJECTS IN CLASS: ZONECAPACITANCEMULTIPLIER:RESEARCHSPECIAL ===========
 ZoneCapacitanceMultiplier:ResearchSpecial,
     1,                       !- Temperature Capacity Multiplier
     5,                       !- Humidity Capacity Multiplier
     ,                        !- Carbon Dioxide Capacity Multiplier
     ;                        !- Generic Contaminant Capacity Multiplier
-
 
 !-   ===========  ALL OBJECTS IN CLASS: TIMESTEP ===========
 
@@ -15125,52 +15123,30 @@ Output:Variable,Zone:Refrigeration,Zone Mean Air Temperature,timestep; !- Zone A
 !    Air System DX Cooling Coil Electric Energy,  !- Variable Name
 !    timestep;                  !- Reporting Frequency
 
-!Output:Variable,Sales RTU DX Coil,Cooling Coil Electric Energy,timestep; !- HVAC Sum [J]
-!Output:Variable,Sales RTU DX Coil,Cooling Coil Electric Power,timestep; !- HVAC Average [W]
-!Output:Variable,Sales RTU DX Coil,Cooling Coil Latent Cooling Energy,timestep; !- HVAC Sum [J]
-!Output:Variable,Sales RTU DX Coil,Cooling Coil Latent Cooling Rate,timestep; !- HVAC Average [W]
-!Output:Variable,Sales RTU DX Coil,Cooling Coil Runtime Fraction,timestep; !- HVAC Average []
-!Output:Variable,Sales RTU DX Coil,Cooling Coil Sensible Cooling Energy,timestep; !- HVAC Sum [J]
-!Output:Variable,Sales RTU DX Coil,Cooling Coil Sensible Cooling Rate,timestep; !- HVAC Average [W]
-!Output:Variable,Sales RTU DX Coil,Cooling Coil Total Cooling Energy,timestep; !- HVAC Sum [J]
-!Output:Variable,Sales RTU DX Coil,Cooling Coil Total Cooling Rate,timestep; !- HVAC Average [W]
-
-!Output:Variable,Sales RTU Furnace,Heating Coil Air Heating Rate,timestep; !- HVAC Average [W]
-!Output:Variable,Sales RTU Reheat Coil,Heating Coil Air Heating Rate,timestep; !- HVAC Average [W]
-!Output:Variable,Sales RTU Furnace,Heating Coil Air Heating Energy,timestep; !- HVAC Average [W]
-!Output:Variable,Sales RTU Reheat Coil,Heating Coil Air Heating Energy,timestep; !- HVAC Average [W]
-!Output:Variable,Sales RTU Furnace,Heating Coil Gas Rate,timestep; !- HVAC Average [W]
-!Output:Variable,Sales RTU Furnace,Heating Coil Gas Energy,timestep; !- HVAC Average [W]
-
 ! REFRIGERATION OUTPUTS
+! ZONES TEMPERATURE
 Output:Variable,Zone:Refrigeration,Zone Mean Air Temperature,timestep;
+Output:Variable,Zone:Sales,Zone Mean Air Temperature,timestep;
+Output:Variable,Zone:Service,Zone Mean Air Temperature,timestep;
+Output:Variable,Zone:Office,Zone Mean Air Temperature,timestep;
+Output:Variable,Zone:Backroom,Zone Mean Air Temperature,timestep;
+
+! BUILDING OUTPUTS
+Output:Variable,Whole building,Facility Total Building Electric Demand Power,timestep; !- HVAC Average [W]
+Output:Variable,Whole building,Facility Total HVAC Electric Demand Power,timestep; !- HVAC Average [W]
+Output:Variable,Whole building,Facility Total Electric Demand Power,timestep; !- HVAC Average [W]
+
+! POWER COMPRESSOR A, B, C, D
+Output:Variable,*,Refrigeration System Total Compressor Electric Power, timestep;
+
 Output:Variable,*,Refrigeration Case Evaporator Total Cooling Rate, timestep;
-!Output:Variable,B01 - Frozen Food Reach-Ins,Refrigeration Case Evaporator Sensible Cooling Rate, timestep;
-!Output:Variable,B01 - Frozen Food Reach-Ins,Refrigeration Case Evaporator Latent Cooling Rate, timestep;
-!Output:Variable,B01 - Frozen Food Reach-Ins,Refrigeration Case Zone Sensible Cooling Rate, timestep;
-!Output:Variable,B01 - Frozen Food Reach-Ins,Refrigeration Case Zone Sensible Heating Rate, timestep;
-!Output:Variable,B01 - Frozen Food Reach-Ins,Refrigeration Case Zone Latent Rate, timestep;
 Output:Variable,*,Refrigeration Case Evaporator Fan Electric Power, timestep;
 Output:Variable,*,Refrigeration Case Lighting Electric Power, timestep;
 Output:Variable,*,Refrigeration Case Anti Sweat Electric Power, timestep;
 Output:Variable,*,Refrigeration Case Defrost Electric Power, timestep;
 
-!Output:Variable,B02 - Frozen Food Reach-Ins,Refrigeration Case Evaporator Total Cooling Rate, timestep;
-!Output:Variable,B03 - Frozen Food Reach-Ins,Refrigeration Case Evaporator Total Cooling Rate, timestep;
-!Output:Variable,B04 - Bakery Freezer,Refrigeration Walk In Evaporator Total Cooling Rate, timestep;
-!Output:Variable,Rack B - Dummy Load,Refrigeration Case Evaporator Total Cooling Rate, timestep;
-
 Output:Variable,*,Refrigeration Compressor Electric Power, timestep;
-!Output:Variable,CPX B2,Refrigeration Compressor Electric Power, timestep;
-!Output:Variable,CPX B3,Refrigeration Compressor Electric Power, timestep;
 Output:Variable,*,Refrigeration System Average Compressor COP, timestep;
-Output:Variable,*,Refrigeration System Total Compressor Electric Power, timestep;
-
-!Output:Variable,RACK A,Refrigeration System Total Compressor Electric Power, timestep;
-!Output:Variable,RACK C,Refrigeration System Total Compressor Electric Power, timestep;
-!Output:Variable,RACK D,Refrigeration System Total Compressor Electric Power, timestep;
-!Output:Variable,*,Refrigeration System Evaporating Temperature, timestep;
-
 
 Output:Variable,*,Refrigeration Walk In Fan Electric Power, timestep;
 Output:Variable,*,Refrigeration Walk In Lighting Electric Power, timestep;
@@ -15178,12 +15154,10 @@ Output:Variable,*,Refrigeration Walk In Heater Electric Power, timestep;
 Output:Variable,*,Refrigeration Walk In Defrost Electric Power, timestep;
 Output:Variable,*,Refrigeration System Condenser Fan Electric Power, timestep;
 
-
 Output:Variable,*,REFRIGERATION CASE ZONE SENSIBLE COOLING RATE, timestep;
 Output:Variable,*,REFRIGERATION CASE ZONE SENSIBLE HEATING RATE, timestep;
 Output:Variable,*,REFRIGERATION CASE ZONE LATENT RATE, timestep;
 
-Output:Variable,Whole building,Facility Total Building Electric Demand Power,timestep; !- HVAC Average [W]
 
 Output:SQLite, Simple;
 
@@ -15195,16 +15169,16 @@ Output:SQLite, Simple;
     Any Number,              !- Schedule Type Limits Name
     0;                       !- Initial Value
 
-  OtherEquipment,
-    OthEq 1,                 !- Name
-    Zone:Refrigeration,      !- Zone or ZoneList Name
-    RefridSch,               !- Schedule Name
-    EquipmentLevel,          !- Design Level Calculation Method
-    726,                     !- Design Level {W}
-    ,                        !- Power per Zone Floor Area {W/m2}
-    ,                        !- Power per Person {W/Person}
-    0,                       !- Fraction Latent
-    0.7,                     !- Fraction Radiant
-    0;                       !- Fraction Lost
+!  OtherEquipment,
+!    OthEq 1,                 !- Name
+!    Zone:Refrigeration,      !- Zone or ZoneList Name
+!    RefridSch,               !- Schedule Name
+!    EquipmentLevel,          !- Design Level Calculation Method
+!    726,                     !- Design Level {W}
+!    ,                        !- Power per Zone Floor Area {W/m2}
+!    ,                        !- Power per Person {W/Person}
+!    0,                       !- Fraction Latent
+!    0.7,                     !- Fraction Radiant
+!    0;                       !- Fraction Lost
 
 

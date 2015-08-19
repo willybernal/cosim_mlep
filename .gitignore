@@ -37,7 +37,6 @@ utilSocket.log
 *.mdd
 *.shd
 *.sql
-*.csv
 *.idd
 *.ini
 *.epw

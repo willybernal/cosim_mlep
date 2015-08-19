@@ -32,12 +32,20 @@ int startProcess(char progname[], char args[], char env[], char workdir[])
 #if defined(DEBUG_FLAG)
     system("echo Inside Start Process>> debug.log");
 #endif
-
+    
     /* cmd variable */
     char cmd[80];
+
+#if defined(DEBUG_FLAG)
+    system("echo Define CMD>> debug.log");
+#endif
     
     /* Create CMD to execute */
     sprintf(cmd, "%s %s > mlep.log &", progname, args);
+    
+#if defined(DEBUG_FLAG)
+    system("echo Wrote CMD>> debug.log");
+#endif
     
     /* Run cmd and get result */
     int status = system(cmd);
@@ -46,12 +54,15 @@ int startProcess(char progname[], char args[], char env[], char workdir[])
     if (status != 0)
     {
         printf("Error while starting external co-simulation program.");
+#if defined(DEBUG_FLAG)
+        system("echo Error while starting external co-simulation program.>> debug.log");
+#endif
     }
     
 #if defined(DEBUG_FLAG)
     system("echo Leaving Start Process>> debug.log");
 #endif
-
+    
     /* Return E+ status */
     return status;
 }
@@ -88,7 +99,7 @@ char* mlepEncodeRealData(int VERNUMBER, int flag, float currentTime, float value
         /* Error in simulation */
         sprintf(new_buffer, "%d %d",VERNUMBER, flag);
     }
-
+    
     return new_buffer;
 }
 
@@ -150,7 +161,7 @@ struct decodedPacket mlepDecodePacket(char readpacket[])
     int iter = 1;
     int j = 0;
     sscanf(token, "%d", &version);
-
+    
     if (version != 2){
 #if defined(DEBUG_FLAG)
         system("echo Not Right Version >> debug.log");
@@ -158,7 +169,7 @@ struct decodedPacket mlepDecodePacket(char readpacket[])
         decodedpacket.flag = 1;
         return decodedpacket;
     }
-        
+    
     /* walk through other tokens */
 #if defined(DEBUG_FLAG)
     system("echo Parse MSG >> debug.log");
@@ -170,7 +181,7 @@ struct decodedPacket mlepDecodePacket(char readpacket[])
             sscanf(token, "%f", &realvalues[j]);
             j++;
         }
-
+        
         iter++;
         token = strtok(NULL, s);
     }
@@ -279,7 +290,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
     if ((sockfd = socket(AF_INET, SOCK_STREAM,0)) == -1)
     {
 #if defined(DEBUG_FLAG)
-    system("echo Server-Socket Error >> debug.log");
+        system("echo Server-Socket Error >> debug.log");
 #endif
 #if !defined(MATLAB_MEX_FILE)
         perror("Server-socket() error!");
@@ -287,7 +298,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
 #elseif
         printf("Server-socket() error!");
         return;
-#endif        
+#endif
         
     }
     else
@@ -314,7 +325,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
     /* automatically fill with my IP */
     my_addr.sin_addr.s_addr = INADDR_ANY;
     
-
+    
 #if defined(DEBUG_FLAG)
     printf("Server-Using %s and port %d...\n", inet_ntoa(my_addr.sin_addr), MYPORT);
     system("echo Server-Using addr and port >> debug.log");
@@ -326,7 +337,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
     if(bind(sockfd, (struct sockaddr *)&my_addr, sizeof(struct sockaddr)) == -1)
     {
 #if defined(DEBUG_FLAG)
-    system("echo Server-Bind() Error >> debug.log");
+        system("echo Server-Bind() Error >> debug.log");
 #endif
 #if !defined(MATLAB_MEX_FILE)
         perror("Server-bind() error");
@@ -334,7 +345,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
 #elseif
         printf("Server-bind() error!");
         return;
-#endif        
+#endif
     }
     else{
         
@@ -347,7 +358,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
     if(listen(sockfd, BACKLOG) == -1)
     {
 #if defined(DEBUG_FLAG)
-    system("echo Server-Listen() Error>>debug.log");
+        system("echo Server-Listen() Error>>debug.log");
 #endif
 #if !defined(MATLAB_MEX_FILE)
         perror("Server-listen() error");
@@ -355,7 +366,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
 #elseif
         printf("Server-listen() error!");
         return;
-#endif        
+#endif
     }
 #if defined(DEBUG_FLAG)
     printf("Server-listen() is OK...Listening...\n");
@@ -397,7 +408,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
     if ((new_fd = accept(sockfd, (struct sockaddr *)&their_addr, &sin_size)) == -1)
     {
 #if defined(DEBUG_FLAG)
-    system("echo Server Accept Error >> debug.log");
+        system("echo Server Accept Error >> debug.log");
 #endif
 #if !defined(MATLAB_MEX_FILE)
         perror("Server-accept() error");
@@ -405,7 +416,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
 #elseif
         printf("Server-accept() error!");
         return;
-#endif        
+#endif
     }
     else
     {
@@ -423,7 +434,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
 #if defined(DEBUG_FLAG)
     system("echo Leaving mlepCreate >> debug.log");
 #endif
-
+    
     /* Return cosim */
     return cosim;
 }

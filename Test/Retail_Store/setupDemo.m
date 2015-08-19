@@ -9,8 +9,8 @@ t = 0:3600:1*(24)*3600;
 
 Tlow = -30;
 Thigh = -10;
-Tevl = (Thigh-Tlow)*rand(25,1) + Tlow;
-Tevl = 1:1:24;
+%Tevl = (Thigh-Tlow)*rand(25,1) + Tlow;
+Tevl = -15*ones(1,24);
 
 input.time=t;
 input.signals.values=Tevl;

@@ -34,12 +34,11 @@ int startProcess(char progname[], char args[], char env[], char workdir[])
 #endif
     
     /* cmd variable */
-    char cmd[80];
-
+    char cmd[1000];
+    
 #if defined(DEBUG_FLAG)
     system("echo Define CMD>> debug.log");
 #endif
-    
     /* Create CMD to execute */
     sprintf(cmd, "%s %s > mlep.log &", progname, args);
     

@@ -1,0 +1,28 @@
+{
+  "reduce_lighting_loads_by_percentage": {
+    "demo_cost_initial_const": false,
+    "demolition_cost": 0,
+    "expected_life": 15,
+    "lighting_power_reduction_percent": 56.58612108132884,
+    "material_and_installation_cost": 150,
+    "om_cost": 0,
+    "om_frequency": 1,
+    "source": "Reduce Lighting Loads by Percentage",
+    "space_type": "{684e3a71-e9bd-4547-96f1-ff699f809866}",
+    "years_until_costs_start": 0
+  },
+  "rotate_building_relative_to_current_orientation": {
+    "orientation_final": 109.380225523794,
+    "orientation_initial": 0,
+    "relative_building_rotation": 109.38022552379407,
+    "source": "Rotate Building"
+  },
+  "set_r_value_of_insulation_for_exterior_walls_to_a_specific_value": {
+    "allow_reduction": false,
+    "material_cost_increase_ip": 0,
+    "one_time_retrofit_cost_ip": 0,
+    "r_value": 20.282824992145027,
+    "source": "Increase R-value of Insulation for Exterior Walls to a Specific Value",
+    "years_until_retrofit_cost": 0
+  }
+}

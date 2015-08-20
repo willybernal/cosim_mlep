@@ -1,1 +1,672 @@
-{"analysis":{"_id":"212e61ce-fd0c-4e2a-9752-5a1b6bdd21b1","created_at":"2015-08-04T22:56:35Z","description":null,"display_name":"Template","exit_on_guideline14":false,"file_format_version":1,"iteration":-1,"name":"template","os_metadata":null,"output_variables":[{"units":"MJ/m2","objective_function":true,"objective_function_index":0,"objective_function_target":140.0,"objective_function_group":1,"scaling_factor":null,"display_name":"Total Natural Gas Intensity","display_name_short":"NG EUI","metadata_id":"total_natural_gas_intensity","name":"standard_report_legacy.total_natural_gas","visualize":true,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":true,"objective_function_index":1,"objective_function_target":590.0,"objective_function_group":2,"scaling_factor":5.0,"display_name":"Total Electricity Intensity","display_name_short":"Elec EUI","metadata_id":"total_electricity_intensity","name":"standard_report_legacy.total_electricity","visualize":true,"export":true,"variable_type":"double"},{"units":"hrs","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Unmet Cooling Hours","display_name_short":"Unmet Cooling Hours","metadata_id":null,"name":"standard_reports.time_setpoint_not_met_during_occupied_cooling","visualize":false,"export":true,"variable_type":"double"},{"units":"hrs","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Unmet Heating Hours","display_name_short":"Unmet Heating Hours","metadata_id":null,"name":"standard_reports.time_setpoint_not_met_during_occupied_heating","visualize":false,"export":true,"variable_type":"double"},{"units":"hrs","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Total Unmet Hours","display_name_short":"Total Unmet Hours","metadata_id":null,"name":"standard_reports.time_setpoint_not_met_during_occupied_hours","visualize":false,"export":true,"variable_type":"double"},{"units":"m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Building Area","display_name_short":"Building Area","metadata_id":null,"name":"standard_reports.total_building_area","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Natural Gas Heating Intensity","display_name_short":"Natural Gas Heating Intensity","metadata_id":null,"name":"standard_report_legacy.heating_natural_gas","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Cooling Electricity Intensity","display_name_short":"Cooling Electricity Intensity","metadata_id":null,"name":"standard_report_legacy.cooling_electricity","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Interior Lighting Electricity Intensity","display_name_short":"Interior Lighting Electricity Intensity","metadata_id":null,"name":"standard_report_legacy.interior_lighting_electricity","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Exterior Lighting Electricity Intensity","display_name_short":"Exterior Lighting Electricity Intensity","metadata_id":null,"name":"standard_report_legacy.exterior_lighting_electricity","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Equipment Electricity Intensity","display_name_short":"Equipment Electricity Intensity","metadata_id":null,"name":"standard_report_legacy.interior_equipment_electricity","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Equipment Natural Gas Intensity","display_name_short":"Equipment Natural Gas Intensity","metadata_id":null,"name":"standard_report_legacy.interior_equipment_natural_gas","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Experior Equipment Electricity Intensity","display_name_short":"Experior Equipment Electricity Intensity","metadata_id":null,"name":"standard_report_legacy.exterior_equipment_electricity","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Fans Electricity Intensity","display_name_short":"Fans Electricity Intensity","metadata_id":null,"name":"standard_report_legacy.fans_electricity","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Pumps Electricity Intensity","display_name_short":"Pumps Electricity Intensity","metadata_id":null,"name":"standard_report_legacy.pumps_electricity","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Heat Rejection Electricity Intensity","display_name_short":"Heat Rejection Electricity Intensity","metadata_id":null,"name":"standard_report_legacy.heat_rejection_electricity","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Humidification Electricity Intensity","display_name_short":"Humidification Electricity Intensity","metadata_id":null,"name":"standard_report_legacy.humidification_electricity","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Water Systems Electricity Intensity","display_name_short":"Water Systems Electricity Intensity","metadata_id":null,"name":"standard_report_legacy.water_systems_electricity","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Water Systems Natural Gas Intensity","display_name_short":"Water Systems Natural Gas Intensity","metadata_id":null,"name":"standard_report_legacy.water_systems_natural_gas","visualize":false,"export":true,"variable_type":"double"},{"units":"MJ/m2","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Refrigeration Electricity Intensity","display_name_short":"Refrigeration Electricity Intensity","metadata_id":null,"name":"standard_report_legacy.refrigeration_electricity","visualize":false,"export":true,"variable_type":"double"},{"units":"$","objective_function":false,"objective_function_index":null,"objective_function_target":null,"objective_function_group":null,"scaling_factor":null,"display_name":"Total Life Cycle Cost","display_name_short":"Total Life Cycle Cost","metadata_id":null,"name":"standard_report.total_life_cycle_cost","visualize":false,"export":true,"variable_type":"double"}],"problem":{"random_seed":1979,"algorithm":{"number_of_samples":30,"sample_method":"all_variables","objective_functions":["standard_report_legacy.total_natural_gas","standard_report_legacy.total_electricity"]},"analysis_type":"lhs","workflow":[{"name":"reduce_lighting_loads_by_percentage","display_name":"Reduce Lighting Loads by Percentage","measure_type":"RubyMeasure","measure_definition_class_name":"ReduceLightingLoadsByPercentage","measure_definition_directory":"./measures/ReduceLightingLoadsByPercentage","measure_definition_directory_local":"/Users/hhorsey/repos/openstudio-analysis-spreadsheet/measures/ReduceLightingLoadsByPercentage","measure_definition_display_name":"Reduce Lighting Loads by Percentage","measure_definition_name":"reduce_lighting_loads_by_percentage","measure_definition_name_xml":null,"measure_definition_uuid":"09c32d12-5326-4e87-b4a9-51a88d1236c4","measure_definition_version_uuid":"10ba47b5-ec76-4bda-9d54-8ba6b42f49a2","arguments":[{"display_name":"Apply the Measure to a Specific Space Type or to the Entire Model.","display_name_short":"Apply the Measure to a Specific Space Type or to the Entire Model.","name":"space_type","value_type":"string","default_value":"*Entire Building*","value":"*Entire Building*","uuid":"e4a2a818-160c-424e-8661-574f8c3fa501"},{"display_name":"Increase in Material and Installation Cost for Lighting per Floor Area (%).","display_name_short":"Increase in Material and Installation Cost for Lighting per Floor Area (%).","name":"material_and_installation_cost","value_type":"double","default_value":150.0,"value":150.0,"uuid":"6d86592d-677b-4244-9cfd-5f4eb58b1f66"},{"display_name":"Increase in Demolition Costs for Lighting per Floor Area (%).","display_name_short":"Increase in Demolition Costs for Lighting per Floor Area (%).","name":"demolition_cost","value_type":"double","default_value":0.0,"value":0.0,"uuid":"8ba98949-2e4c-41ce-abe1-39d4e487d741"},{"display_name":"Years Until Costs Start (whole years).","display_name_short":"Years Until Costs Start (whole years).","name":"years_until_costs_start","value_type":"integer","default_value":0,"value":0,"uuid":"f0d33c15-1941-44a2-810a-45113783c782"},{"display_name":"Demolition Costs Occur During Initial Construction?","display_name_short":"Demolition Costs Occur During Initial Construction?","name":"demo_cost_initial_const","value_type":"bool","default_value":false,"value":false,"uuid":"91d44770-f2e0-44a2-9a26-ee56f9dbbbff"},{"display_name":"Expected Life (whole years).","display_name_short":"Expected Life (whole years).","name":"expected_life","value_type":"integer","default_value":15,"value":15,"uuid":"d0228319-0683-48e2-85ce-141b3cfadd40"},{"display_name":"Increase O \u0026 M Costs for Lighting per Floor Area (%).","display_name_short":"Increase O \u0026 M Costs for Lighting per Floor Area (%).","name":"om_cost","value_type":"double","default_value":0.0,"value":0.0,"uuid":"0d81ad07-f28e-4d08-b5b8-2171964041c6"},{"display_name":"O \u0026 M Frequency (whole years).","display_name_short":"O \u0026 M Frequency (whole years).","name":"om_frequency","value_type":"integer","default_value":1,"value":1,"uuid":"e2d83a01-9cc0-4954-8138-d7ec50bb6ea0"}],"variables":[{"argument":{"display_name":"LPD Reduction","display_name_short":"LPD Reduction","name":"lighting_power_reduction_percent","value_type":"double","default_value":0.0,"value":0.0,"uuid":"b885a84c-d9d4-41d5-9f44-7f5e0f714052"},"display_name":"LPD Reduction","display_name_short":"LPD Reduction","variable_type":"variable","units":null,"minimum":0.0,"maximum":70.0,"relation_to_output":null,"static_value":0.0,"uuid":"40c64c32-3383-423d-bffe-e4f87cb4cc49","version_uuid":"876bdab8-3e8d-4e1d-8773-600a6de3ac36","variable":true,"uncertainty_description":{"type":"triangle_uncertain","attributes":[{"name":"lower_bounds","value":0.0},{"name":"upper_bounds","value":70.0},{"name":"modes","value":20.0},{"name":"delta_x","value":null},{"name":"stddev","value":11.66666667}]},"workflow_index":0}],"workflow_index":0,"uuid":"14b4f8f9-3437-4464-8ff7-89d429e870ae"},{"name":"rotate_building_relative_to_current_orientation","display_name":"Rotate Building Relative to Current Orientation","measure_type":"RubyMeasure","measure_definition_class_name":"RotateBuilding","measure_definition_directory":"./measures/RotateBuilding","measure_definition_directory_local":"/Users/hhorsey/repos/openstudio-analysis-spreadsheet/measures/RotateBuilding","measure_definition_display_name":"Rotate Building Relative to Current Orientation","measure_definition_name":"rotate_building_relative_to_current_orientation","measure_definition_name_xml":null,"measure_definition_uuid":"3839e7a5-98ee-4107-aeef-d27095f8a3d3","measure_definition_version_uuid":"cefeedfd-dd31-4e29-b6f7-027f98e334f2","arguments":null,"variables":[{"argument":{"display_name":"Rotation","display_name_short":"Rotation","name":"relative_building_rotation","value_type":"double","default_value":0.0,"value":0.0,"uuid":"08bf7703-9099-40f4-9482-d053ed895a1d"},"display_name":"Rotation","display_name_short":"Rotation","variable_type":"variable","units":null,"minimum":0.0,"maximum":359.0,"relation_to_output":null,"static_value":0.0,"uuid":"e5aac45d-0f6a-498a-bf35-f83d06ad33cc","version_uuid":"2cdd0982-378a-4e4d-b5de-64c000a09be1","variable":true,"uncertainty_description":{"type":"uniform_uncertain","attributes":[{"name":"lower_bounds","value":0.0},{"name":"upper_bounds","value":359.0},{"name":"modes","value":180.0},{"name":"delta_x","value":null},{"name":"stddev","value":59.83333333}]},"workflow_index":0}],"workflow_index":1,"uuid":"d27aca42-9701-41bf-8194-304010c10f19"},{"name":"set_r_value_of_insulation_for_exterior_walls_to_a_specific_value","display_name":"Set R-value of Insulation for Exterior Walls to a Specific Value","measure_type":"RubyMeasure","measure_definition_class_name":"IncreaseInsulationRValueForExteriorWalls","measure_definition_directory":"./measures/IncreaseInsulationRValueForExteriorWalls","measure_definition_directory_local":"/Users/hhorsey/repos/openstudio-analysis-spreadsheet/measures/IncreaseInsulationRValueForExteriorWalls","measure_definition_display_name":"Set R-value of Insulation for Exterior Walls to a Specific Value","measure_definition_name":"set_r_value_of_insulation_for_exterior_walls_to_a_specific_value","measure_definition_name_xml":null,"measure_definition_uuid":"15d1991f-50c6-437b-b79d-26eac2cf01b5","measure_definition_version_uuid":"5692d47a-f1e4-4cdc-82d6-70daaf62a3e6","arguments":[{"display_name":"Increase in Material and Installation Costs for Construction per Area Used ($/ft^2).","display_name_short":"Increase in Material and Installation Costs for Construction per Area Used ($/ft^2).","name":"material_cost_increase_ip","value_type":"double","default_value":0.0,"value":0.0,"uuid":"07764a09-e5b8-4291-8866-6ecbe5d7f5b2"},{"display_name":"One Time Retrofit Cost to Add Insulation to Construction ($/ft^2).","display_name_short":"One Time Retrofit Cost to Add Insulation to Construction ($/ft^2).","name":"one_time_retrofit_cost_ip","value_type":"double","default_value":0.0,"value":0.0,"uuid":"14bd1805-555d-4484-99d1-171bd51f7090"},{"display_name":"Year to Incur One Time Retrofit Cost (whole years).","display_name_short":"Year to Incur One Time Retrofit Cost (whole years).","name":"years_until_retrofit_cost","value_type":"integer","default_value":0,"value":0,"uuid":"afe0b5e9-d722-45a2-a0df-594568281c8f"}],"variables":[{"argument":{"display_name":"Wall R-Value","display_name_short":"Wall R-Value","name":"r_value","value_type":"double","default_value":13.0,"value":13.0,"uuid":"97d0466f-3cb2-47f0-bf7b-e03c41607af7"},"display_name":"Wall R-Value","display_name_short":"Wall R-Value","variable_type":"variable","units":null,"minimum":0.0,"maximum":50.0,"relation_to_output":null,"static_value":13.0,"uuid":"3b23c41c-c3c8-4419-89d2-6743b2cc92b5","version_uuid":"c64ed0c0-9c6d-4630-9b46-ca0d1a211621","variable":true,"uncertainty_description":{"type":"normal_uncertain","attributes":[{"name":"lower_bounds","value":0.0},{"name":"upper_bounds","value":50.0},{"name":"modes","value":25.0},{"name":"delta_x","value":null},{"name":"stddev","value":8.333333333}]},"workflow_index":0}],"workflow_index":2,"uuid":"ac8591db-fcc9-4304-8e32-43920f6139a5"}]},"project_id":"f099bf52-f7c2-453d-a3c0-e381cf9b2691","results":{"lhs":{},"batch_run":{}},"run_flag":true,"samples":null,"seed":{"file_type":"OSM","path":"./seed/large_office_air_cooled_chiller.osm"},"seed_zip_content_type":"application/zip","seed_zip_file_name":"template.zip","seed_zip_file_size":361579,"seed_zip_fingerprint":"9f049c777518a2d92e086185c1647c70","seed_zip_updated_at":"2015-08-04T22:56:35+00:00","status_message":"","updated_at":"2015-08-04T22:56:42Z","use_shm":false,"uuid":"212e61ce-fd0c-4e2a-9752-5a1b6bdd21b1","version_uuid":null,"weather_file":{"file_type":"EPW","path":"./weather/USA_CO_Denver.Intl.AP.725650_TMY3.epw"}}}
+{  
+   "analysis":{  
+      "_id":"212e61ce-fd0c-4e2a-9752-5a1b6bdd21b1",
+      "created_at":"2015-08-04T22:56:35Z",
+      "description":null,
+      "display_name":"Template",
+      "exit_on_guideline14":false,
+      "file_format_version":1,
+      "iteration":-1,
+      "name":"template",
+      "os_metadata":null,
+      "output_variables":[  
+         {  
+            "units":"MJ/m2",
+            "objective_function":true,
+            "objective_function_index":0,
+            "objective_function_target":140.0,
+            "objective_function_group":1,
+            "scaling_factor":null,
+            "display_name":"Total Natural Gas Intensity",
+            "display_name_short":"NG EUI",
+            "metadata_id":"total_natural_gas_intensity",
+            "name":"standard_report_legacy.total_natural_gas",
+            "visualize":true,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":true,
+            "objective_function_index":1,
+            "objective_function_target":590.0,
+            "objective_function_group":2,
+            "scaling_factor":5.0,
+            "display_name":"Total Electricity Intensity",
+            "display_name_short":"Elec EUI",
+            "metadata_id":"total_electricity_intensity",
+            "name":"standard_report_legacy.total_electricity",
+            "visualize":true,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"hrs",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Unmet Cooling Hours",
+            "display_name_short":"Unmet Cooling Hours",
+            "metadata_id":null,
+            "name":"standard_reports.time_setpoint_not_met_during_occupied_cooling",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"hrs",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Unmet Heating Hours",
+            "display_name_short":"Unmet Heating Hours",
+            "metadata_id":null,
+            "name":"standard_reports.time_setpoint_not_met_during_occupied_heating",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"hrs",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Total Unmet Hours",
+            "display_name_short":"Total Unmet Hours",
+            "metadata_id":null,
+            "name":"standard_reports.time_setpoint_not_met_during_occupied_hours",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Building Area",
+            "display_name_short":"Building Area",
+            "metadata_id":null,
+            "name":"standard_reports.total_building_area",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Natural Gas Heating Intensity",
+            "display_name_short":"Natural Gas Heating Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.heating_natural_gas",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Cooling Electricity Intensity",
+            "display_name_short":"Cooling Electricity Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.cooling_electricity",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Interior Lighting Electricity Intensity",
+            "display_name_short":"Interior Lighting Electricity Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.interior_lighting_electricity",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Exterior Lighting Electricity Intensity",
+            "display_name_short":"Exterior Lighting Electricity Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.exterior_lighting_electricity",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Equipment Electricity Intensity",
+            "display_name_short":"Equipment Electricity Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.interior_equipment_electricity",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Equipment Natural Gas Intensity",
+            "display_name_short":"Equipment Natural Gas Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.interior_equipment_natural_gas",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Experior Equipment Electricity Intensity",
+            "display_name_short":"Experior Equipment Electricity Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.exterior_equipment_electricity",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Fans Electricity Intensity",
+            "display_name_short":"Fans Electricity Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.fans_electricity",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Pumps Electricity Intensity",
+            "display_name_short":"Pumps Electricity Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.pumps_electricity",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Heat Rejection Electricity Intensity",
+            "display_name_short":"Heat Rejection Electricity Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.heat_rejection_electricity",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Humidification Electricity Intensity",
+            "display_name_short":"Humidification Electricity Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.humidification_electricity",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Water Systems Electricity Intensity",
+            "display_name_short":"Water Systems Electricity Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.water_systems_electricity",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Water Systems Natural Gas Intensity",
+            "display_name_short":"Water Systems Natural Gas Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.water_systems_natural_gas",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"MJ/m2",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Refrigeration Electricity Intensity",
+            "display_name_short":"Refrigeration Electricity Intensity",
+            "metadata_id":null,
+            "name":"standard_report_legacy.refrigeration_electricity",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         },
+         {  
+            "units":"$",
+            "objective_function":false,
+            "objective_function_index":null,
+            "objective_function_target":null,
+            "objective_function_group":null,
+            "scaling_factor":null,
+            "display_name":"Total Life Cycle Cost",
+            "display_name_short":"Total Life Cycle Cost",
+            "metadata_id":null,
+            "name":"standard_report.total_life_cycle_cost",
+            "visualize":false,
+            "export":true,
+            "variable_type":"double"
+         }
+      ],
+      "problem":{  
+         "random_seed":1979,
+         "algorithm":{  
+            "number_of_samples":30,
+            "sample_method":"all_variables",
+            "objective_functions":[  
+               "standard_report_legacy.total_natural_gas",
+               "standard_report_legacy.total_electricity"
+            ]
+         },
+         "analysis_type":"lhs",
+         "workflow":[  
+            {  
+               "name":"reduce_lighting_loads_by_percentage",
+               "display_name":"Reduce Lighting Loads by Percentage",
+               "measure_type":"RubyMeasure",
+               "measure_definition_class_name":"ReduceLightingLoadsByPercentage",
+               "measure_definition_directory":"./measures/ReduceLightingLoadsByPercentage",
+               "measure_definition_directory_local":"/Users/hhorsey/repos/openstudio-analysis-spreadsheet/measures/ReduceLightingLoadsByPercentage",
+               "measure_definition_display_name":"Reduce Lighting Loads by Percentage",
+               "measure_definition_name":"reduce_lighting_loads_by_percentage",
+               "measure_definition_name_xml":null,
+               "measure_definition_uuid":"09c32d12-5326-4e87-b4a9-51a88d1236c4",
+               "measure_definition_version_uuid":"10ba47b5-ec76-4bda-9d54-8ba6b42f49a2",
+               "arguments":[  
+                  {  
+                     "display_name":"Apply the Measure to a Specific Space Type or to the Entire Model.",
+                     "display_name_short":"Apply the Measure to a Specific Space Type or to the Entire Model.",
+                     "name":"space_type",
+                     "value_type":"string",
+                     "default_value":"*Entire Building*",
+                     "value":"*Entire Building*",
+                     "uuid":"e4a2a818-160c-424e-8661-574f8c3fa501"
+                  },
+                  {  
+                     "display_name":"Increase in Material and Installation Cost for Lighting per Floor Area (%).",
+                     "display_name_short":"Increase in Material and Installation Cost for Lighting per Floor Area (%).",
+                     "name":"material_and_installation_cost",
+                     "value_type":"double",
+                     "default_value":150.0,
+                     "value":150.0,
+                     "uuid":"6d86592d-677b-4244-9cfd-5f4eb58b1f66"
+                  },
+                  {  
+                     "display_name":"Increase in Demolition Costs for Lighting per Floor Area (%).",
+                     "display_name_short":"Increase in Demolition Costs for Lighting per Floor Area (%).",
+                     "name":"demolition_cost",
+                     "value_type":"double",
+                     "default_value":0.0,
+                     "value":0.0,
+                     "uuid":"8ba98949-2e4c-41ce-abe1-39d4e487d741"
+                  },
+                  {  
+                     "display_name":"Years Until Costs Start (whole years).",
+                     "display_name_short":"Years Until Costs Start (whole years).",
+                     "name":"years_until_costs_start",
+                     "value_type":"integer",
+                     "default_value":0,
+                     "value":0,
+                     "uuid":"f0d33c15-1941-44a2-810a-45113783c782"
+                  },
+                  {  
+                     "display_name":"Demolition Costs Occur During Initial Construction?",
+                     "display_name_short":"Demolition Costs Occur During Initial Construction?",
+                     "name":"demo_cost_initial_const",
+                     "value_type":"bool",
+                     "default_value":false,
+                     "value":false,
+                     "uuid":"91d44770-f2e0-44a2-9a26-ee56f9dbbbff"
+                  },
+                  {  
+                     "display_name":"Expected Life (whole years).",
+                     "display_name_short":"Expected Life (whole years).",
+                     "name":"expected_life",
+                     "value_type":"integer",
+                     "default_value":15,
+                     "value":15,
+                     "uuid":"d0228319-0683-48e2-85ce-141b3cfadd40"
+                  },
+                  {  
+                     "display_name":"Increase O \u0026 M Costs for Lighting per Floor Area (%).",
+                     "display_name_short":"Increase O \u0026 M Costs for Lighting per Floor Area (%).",
+                     "name":"om_cost",
+                     "value_type":"double",
+                     "default_value":0.0,
+                     "value":0.0,
+                     "uuid":"0d81ad07-f28e-4d08-b5b8-2171964041c6"
+                  },
+                  {  
+                     "display_name":"O \u0026 M Frequency (whole years).",
+                     "display_name_short":"O \u0026 M Frequency (whole years).",
+                     "name":"om_frequency",
+                     "value_type":"integer",
+                     "default_value":1,
+                     "value":1,
+                     "uuid":"e2d83a01-9cc0-4954-8138-d7ec50bb6ea0"
+                  }
+               ],
+               "variables":[  
+                  {  
+                     "argument":{  
+                        "display_name":"LPD Reduction",
+                        "display_name_short":"LPD Reduction",
+                        "name":"lighting_power_reduction_percent",
+                        "value_type":"double",
+                        "default_value":0.0,
+                        "value":0.0,
+                        "uuid":"b885a84c-d9d4-41d5-9f44-7f5e0f714052"
+                     },
+                     "display_name":"LPD Reduction",
+                     "display_name_short":"LPD Reduction",
+                     "variable_type":"variable",
+                     "units":null,
+                     "minimum":0.0,
+                     "maximum":70.0,
+                     "relation_to_output":null,
+                     "static_value":0.0,
+                     "uuid":"40c64c32-3383-423d-bffe-e4f87cb4cc49",
+                     "version_uuid":"876bdab8-3e8d-4e1d-8773-600a6de3ac36",
+                     "variable":true,
+                     "uncertainty_description":{  
+                        "type":"triangle_uncertain",
+                        "attributes":[  
+                           {  
+                              "name":"lower_bounds",
+                              "value":0.0
+                           },
+                           {  
+                              "name":"upper_bounds",
+                              "value":70.0
+                           },
+                           {  
+                              "name":"modes",
+                              "value":20.0
+                           },
+                           {  
+                              "name":"delta_x",
+                              "value":null
+                           },
+                           {  
+                              "name":"stddev",
+                              "value":11.66666667
+                           }
+                        ]
+                     },
+                     "workflow_index":0
+                  }
+               ],
+               "workflow_index":0,
+               "uuid":"14b4f8f9-3437-4464-8ff7-89d429e870ae"
+            },
+            {  
+               "name":"rotate_building_relative_to_current_orientation",
+               "display_name":"Rotate Building Relative to Current Orientation",
+               "measure_type":"RubyMeasure",
+               "measure_definition_class_name":"RotateBuilding",
+               "measure_definition_directory":"./measures/RotateBuilding",
+               "measure_definition_directory_local":"/Users/hhorsey/repos/openstudio-analysis-spreadsheet/measures/RotateBuilding",
+               "measure_definition_display_name":"Rotate Building Relative to Current Orientation",
+               "measure_definition_name":"rotate_building_relative_to_current_orientation",
+               "measure_definition_name_xml":null,
+               "measure_definition_uuid":"3839e7a5-98ee-4107-aeef-d27095f8a3d3",
+               "measure_definition_version_uuid":"cefeedfd-dd31-4e29-b6f7-027f98e334f2",
+               "arguments":null,
+               "variables":[  
+                  {  
+                     "argument":{  
+                        "display_name":"Rotation",
+                        "display_name_short":"Rotation",
+                        "name":"relative_building_rotation",
+                        "value_type":"double",
+                        "default_value":0.0,
+                        "value":0.0,
+                        "uuid":"08bf7703-9099-40f4-9482-d053ed895a1d"
+                     },
+                     "display_name":"Rotation",
+                     "display_name_short":"Rotation",
+                     "variable_type":"variable",
+                     "units":null,
+                     "minimum":0.0,
+                     "maximum":359.0,
+                     "relation_to_output":null,
+                     "static_value":0.0,
+                     "uuid":"e5aac45d-0f6a-498a-bf35-f83d06ad33cc",
+                     "version_uuid":"2cdd0982-378a-4e4d-b5de-64c000a09be1",
+                     "variable":true,
+                     "uncertainty_description":{  
+                        "type":"uniform_uncertain",
+                        "attributes":[  
+                           {  
+                              "name":"lower_bounds",
+                              "value":0.0
+                           },
+                           {  
+                              "name":"upper_bounds",
+                              "value":359.0
+                           },
+                           {  
+                              "name":"modes",
+                              "value":180.0
+                           },
+                           {  
+                              "name":"delta_x",
+                              "value":null
+                           },
+                           {  
+                              "name":"stddev",
+                              "value":59.83333333
+                           }
+                        ]
+                     },
+                     "workflow_index":0
+                  }
+               ],
+               "workflow_index":1,
+               "uuid":"d27aca42-9701-41bf-8194-304010c10f19"
+            },
+            {  
+               "name":"set_r_value_of_insulation_for_exterior_walls_to_a_specific_value",
+               "display_name":"Set R-value of Insulation for Exterior Walls to a Specific Value",
+               "measure_type":"RubyMeasure",
+               "measure_definition_class_name":"IncreaseInsulationRValueForExteriorWalls",
+               "measure_definition_directory":"./measures/IncreaseInsulationRValueForExteriorWalls",
+               "measure_definition_directory_local":"/Users/hhorsey/repos/openstudio-analysis-spreadsheet/measures/IncreaseInsulationRValueForExteriorWalls",
+               "measure_definition_display_name":"Set R-value of Insulation for Exterior Walls to a Specific Value",
+               "measure_definition_name":"set_r_value_of_insulation_for_exterior_walls_to_a_specific_value",
+               "measure_definition_name_xml":null,
+               "measure_definition_uuid":"15d1991f-50c6-437b-b79d-26eac2cf01b5",
+               "measure_definition_version_uuid":"5692d47a-f1e4-4cdc-82d6-70daaf62a3e6",
+               "arguments":[  
+                  {  
+                     "display_name":"Increase in Material and Installation Costs for Construction per Area Used ($/ft^2).",
+                     "display_name_short":"Increase in Material and Installation Costs for Construction per Area Used ($/ft^2).",
+                     "name":"material_cost_increase_ip",
+                     "value_type":"double",
+                     "default_value":0.0,
+                     "value":0.0,
+                     "uuid":"07764a09-e5b8-4291-8866-6ecbe5d7f5b2"
+                  },
+                  {  
+                     "display_name":"One Time Retrofit Cost to Add Insulation to Construction ($/ft^2).",
+                     "display_name_short":"One Time Retrofit Cost to Add Insulation to Construction ($/ft^2).",
+                     "name":"one_time_retrofit_cost_ip",
+                     "value_type":"double",
+                     "default_value":0.0,
+                     "value":0.0,
+                     "uuid":"14bd1805-555d-4484-99d1-171bd51f7090"
+                  },
+                  {  
+                     "display_name":"Year to Incur One Time Retrofit Cost (whole years).",
+                     "display_name_short":"Year to Incur One Time Retrofit Cost (whole years).",
+                     "name":"years_until_retrofit_cost",
+                     "value_type":"integer",
+                     "default_value":0,
+                     "value":0,
+                     "uuid":"afe0b5e9-d722-45a2-a0df-594568281c8f"
+                  }
+               ],
+               "variables":[  
+                  {  
+                     "argument":{  
+                        "display_name":"Wall R-Value",
+                        "display_name_short":"Wall R-Value",
+                        "name":"r_value",
+                        "value_type":"double",
+                        "default_value":13.0,
+                        "value":13.0,
+                        "uuid":"97d0466f-3cb2-47f0-bf7b-e03c41607af7"
+                     },
+                     "display_name":"Wall R-Value",
+                     "display_name_short":"Wall R-Value",
+                     "variable_type":"variable",
+                     "units":null,
+                     "minimum":0.0,
+                     "maximum":50.0,
+                     "relation_to_output":null,
+                     "static_value":13.0,
+                     "uuid":"3b23c41c-c3c8-4419-89d2-6743b2cc92b5",
+                     "version_uuid":"c64ed0c0-9c6d-4630-9b46-ca0d1a211621",
+                     "variable":true,
+                     "uncertainty_description":{  
+                        "type":"normal_uncertain",
+                        "attributes":[  
+                           {  
+                              "name":"lower_bounds",
+                              "value":0.0
+                           },
+                           {  
+                              "name":"upper_bounds",
+                              "value":50.0
+                           },
+                           {  
+                              "name":"modes",
+                              "value":25.0
+                           },
+                           {  
+                              "name":"delta_x",
+                              "value":null
+                           },
+                           {  
+                              "name":"stddev",
+                              "value":8.333333333
+                           }
+                        ]
+                     },
+                     "workflow_index":0
+                  }
+               ],
+               "workflow_index":2,
+               "uuid":"ac8591db-fcc9-4304-8e32-43920f6139a5"
+            }
+         ]
+      },
+      "project_id":"f099bf52-f7c2-453d-a3c0-e381cf9b2691",
+      "results":{  
+         "lhs":{  
+
+         },
+         "batch_run":{  
+
+         }
+      },
+      "run_flag":true,
+      "samples":null,
+      "seed":{  
+         "file_type":"OSM",
+         "path":"./seed/large_office_air_cooled_chiller.osm"
+      },
+      "seed_zip_content_type":"application/zip",
+      "seed_zip_file_name":"template.zip",
+      "seed_zip_file_size":361579,
+      "seed_zip_fingerprint":"9f049c777518a2d92e086185c1647c70",
+      "seed_zip_updated_at":"2015-08-04T22:56:35+00:00",
+      "status_message":"",
+      "updated_at":"2015-08-04T22:56:42Z",
+      "use_shm":false,
+      "uuid":"212e61ce-fd0c-4e2a-9752-5a1b6bdd21b1",
+      "version_uuid":null,
+      "weather_file":{  
+         "file_type":"EPW",
+         "path":"./weather/USA_CO_Denver.Intl.AP.725650_TMY3.epw"
+      }
+   }
+}

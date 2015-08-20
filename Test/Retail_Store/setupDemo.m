@@ -24,7 +24,7 @@ csvwrite('constant.txt',constant);
 % fclose(fid);
 
 %% Clear up repo 
-system('rm -r eplus* *.epw in.idf *.log socket* sql* util* Output *.idd *.ini *grt_rtw slprj *.mexa64 *~');
+system('rm -r eplus* *.epw in.idf mlep.log debug.log socket* sql* util* Output *.idd *.ini *grt_rtw slprj *.mexa64 *~');
 clc;
 %% Open simulink
 open('retail_store.slx');

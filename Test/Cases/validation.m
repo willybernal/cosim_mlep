@@ -12,14 +12,14 @@ assert(fid >= 0, ...
 temp = textscan(fid, '%s %f %f %f %f %f','Delimiter',',','EmptyValue', NaN,'TreatAsEmpty','(null)','HeaderLines', 2);
 fclose(fid);
 
-walkin.tevl = temp{3};
-walkin.tprod = temp{4};
-walkin.tamb = temp{5};
-walkin.tout = temp{6};
+tevl = (temp{3}-32)*5/9;
+tprod = (temp{4}-32)*5/9;
+tamb = (temp{5}-32)*5/9;
+tout = (temp{6}-32)*5/9;
 
-walkin.time = 0:5*60:length(walkin.tevl)*5*60;
-walkin.signals.values = 0;
-walkin.signals.dimensions = [4];
+walkin.time = [0:5*60:(length(tevl)-1)*5*60]';
+walkin.signals.values = [tevl, tprod, tamb, tout];
+walkin.signals.dimensions = 4;
 
 %%
 filename = 'validation-reachin.csv';
@@ -35,7 +35,13 @@ assert(fid >= 0, ...
 temp = textscan(fid, '%s %f %f %f %f %f','Delimiter',',','EmptyValue', NaN,'TreatAsEmpty','(null)','HeaderLines', 2);
 fclose(fid);
 
-reachin.tevl = temp{3};
-reachin.tprod = temp{4};
-reachin.tamb = temp{5};
-reachin.tout = temp{6};
+tevl = (temp{3}-32)*5/9;
+tprod = (temp{4}-32)*5/9;
+tamb = (temp{5}-32)*5/9;
+tout = (temp{6}-32)*5/9;
+
+reachin.time = [0:5*60:(length(tevl)-1)*5*60]';
+reachin.signals.values = [tevl, tprod, tamb, tout];
+reachin.signals.dimensions = 4;
+
+save('validation-data.mat','reachin','walkin');

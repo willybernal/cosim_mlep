@@ -1,0 +1,65 @@
+[
+  {
+    "channel": "Measure:reduce_lighting_loads_by_percentage",
+    "start_time": 1438729041.705038,
+    "start_time_str": "2015-08-04 22:57:21 +0000",
+    "end_time": 1438729042.332151,
+    "delta": 0.627112865447998
+  },
+  {
+    "channel": "Measure:rotate_building_relative_to_current_orientation",
+    "start_time": 1438729042.3338463,
+    "start_time_str": "2015-08-04 22:57:22 +0000",
+    "end_time": 1438729042.3553255,
+    "delta": 0.021479129791259766
+  },
+  {
+    "channel": "Measure:set_r_value_of_insulation_for_exterior_walls_to_a_specific_value",
+    "start_time": 1438729042.3585951,
+    "start_time_str": "2015-08-04 22:57:22 +0000",
+    "end_time": 1438729042.8466232,
+    "delta": 0.48802804946899414
+  },
+  {
+    "channel": "Translating to EnergyPlus",
+    "start_time": 1438729042.8475533,
+    "start_time_str": "2015-08-04 22:57:22 +0000",
+    "end_time": 1438729044.0953908,
+    "delta": 1.2478375434875488
+  },
+  {
+    "channel": "Saving OSM and IDF",
+    "start_time": 1438729044.0976913,
+    "start_time_str": "2015-08-04 22:57:24 +0000",
+    "end_time": 1438729044.3583739,
+    "delta": 0.2606825828552246
+  },
+  {
+    "channel": "Copying EnergyPlus files",
+    "start_time": 1438729046.3805985,
+    "start_time_str": "2015-08-04 22:57:26 +0000",
+    "end_time": 1438729046.5667243,
+    "delta": 0.1861257553100586
+  },
+  {
+    "channel": "Running EnergyPlus",
+    "start_time": 1438729046.5667734,
+    "start_time_str": "2015-08-04 22:57:26 +0000",
+    "end_time": 1438729136.7279162,
+    "delta": 90.16114282608032
+  },
+  {
+    "channel": "Running standard post process",
+    "start_time": 1438729139.5390306,
+    "start_time_str": "2015-08-04 22:58:59 +0000",
+    "end_time": 1438729139.9030733,
+    "delta": 0.3640427589416504
+  },
+  {
+    "channel": "Measure:standard_reports",
+    "start_time": 1438729139.9106908,
+    "start_time_str": "2015-08-04 22:58:59 +0000",
+    "end_time": 1438729142.1151505,
+    "delta": 2.2044596672058105
+  }
+]

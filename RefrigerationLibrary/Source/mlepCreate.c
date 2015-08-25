@@ -294,7 +294,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
 #if !defined(MATLAB_MEX_FILE)
         perror("Server-socket() error!");
         exit(1);
-#elseif
+#else
         printf("Server-socket() error!");
         return;
 #endif
@@ -341,7 +341,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
 #if !defined(MATLAB_MEX_FILE)
         perror("Server-bind() error");
         exit(1);
-#elseif
+#else
         printf("Server-bind() error!");
         return;
 #endif
@@ -362,7 +362,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
 #if !defined(MATLAB_MEX_FILE)
         perror("Server-listen() error");
         exit(1);
-#elseif
+#else
         printf("Server-listen() error!");
         return;
 #endif
@@ -412,7 +412,7 @@ struct CosimInstance mlepCreate(char progname[], char arguments[], int timeout0,
 #if !defined(MATLAB_MEX_FILE)
         perror("Server-accept() error");
         exit(1);
-#elseif
+#else
         printf("Server-accept() error!");
         return;
 #endif

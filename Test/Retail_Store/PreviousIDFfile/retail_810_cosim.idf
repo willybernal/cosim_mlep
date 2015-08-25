@@ -67,9 +67,9 @@
   Version,8.1;
 
   SimulationControl,
-    NO,                     !- Do Zone Sizing Calculation
-    NO,                     !- Do System Sizing Calculation
-    NO,                      !- Do Plant Sizing Calculation
+    YES,                     !- Do Zone Sizing Calculation
+    YES,                     !- Do System Sizing Calculation
+    YES,                     !- Do Plant Sizing Calculation
     NO,                      !- Run Simulation for Sizing Periods
     YES;                     !- Run Simulation for Weather File Run Periods
 
@@ -224,7 +224,7 @@
   Sizing:Parameters,
     1.2,                     !- Heating Sizing Factor
     1.2,                     !- Cooling Sizing Factor
-    12;                       !- Timesteps in Averaging Window
+    6;                       !- Timesteps in Averaging Window
 
   ConvergenceLimits,
     2,                       !- Minimum System Timestep {minutes}
@@ -1815,7 +1815,7 @@
     ALWAYS_ON,               !- Availability Schedule Name
     0.53625,                 !- Fan Total Efficiency
     49.8,                    !- Pressure Rise {Pa}
-    0.11582,                 !- Maximum Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Flow Rate {m3/s}
     0.825,                   !- Motor Efficiency
     1.0,                     !- Motor In Airstream Fraction
     Front_Entry Unit Heater Exhaust Node,  !- Air Inlet Node Name
@@ -1827,7 +1827,7 @@
     HVACOperationSchd,       !- Availability Schedule Name
     0.56875,                 !- Fan Total Efficiency
     622.0,                   !- Pressure Rise {Pa}
-    1.43548,                !- Maximum Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Flow Rate {m3/s}
     0.875,                   !- Motor Efficiency
     1.0,                     !- Motor In Airstream Fraction
     PSZ-AC:1_OA-PSZ-AC:1_Unitary_PackageNode,  !- Air Inlet Node Name
@@ -1841,7 +1841,7 @@
     HVACOperationSchd,       !- Availability Schedule Name
     0.5915,                  !- Fan Total Efficiency
     1109.648,                !- Pressure Rise {Pa}
-    5.57518,                !- Maximum Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Flow Rate {m3/s}
     0.91,                    !- Motor Efficiency
     1.0,                     !- Motor In Airstream Fraction
     PSZ-AC:2_OA-PSZ-AC:2_Unitary_PackageNode,  !- Air Inlet Node Name
@@ -1855,7 +1855,7 @@
     HVACOperationSchd,       !- Availability Schedule Name
     0.546,                   !- Fan Total Efficiency
     622.0,                   !- Pressure Rise {Pa}
-    1.03612,                !- Maximum Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Flow Rate {m3/s}
     0.84,                    !- Motor Efficiency
     1.0,                     !- Motor In Airstream Fraction
     PSZ-AC:3_OA-PSZ-AC:3_Unitary_PackageNode,  !- Air Inlet Node Name
@@ -1869,7 +1869,7 @@
     HVACOperationSchd,       !- Availability Schedule Name
     0.53625,                 !- Fan Total Efficiency
     622.0,                   !- Pressure Rise {Pa}
-    0.66745,                !- Maximum Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Flow Rate {m3/s}
     0.825,                   !- Motor Efficiency
     1.0,                     !- Motor In Airstream Fraction
     PSZ-AC:4_OA-PSZ-AC:4_Unitary_PackageNode,  !- Air Inlet Node Name
@@ -1882,7 +1882,7 @@
     PSZ-AC:1_Unitary_Package_HeatCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
     0.8,                     !- Gas Burner Efficiency
-    46239.45561,                !- Nominal Capacity {W} AUTOSIZE
+    AUTOSIZE,                !- Nominal Capacity {W}
     PSZ-AC:1_Unitary_PackageHeatCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC:1 Supply Equipment Outlet Node;  !- Air Outlet Node Name
 
@@ -1890,7 +1890,7 @@
     PSZ-AC:2_Unitary_Package_HeatCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
     0.78,                    !- Gas Burner Efficiency
-    174795.44893,                !- Nominal Capacity {W} AUTOSIZE
+    AUTOSIZE,                !- Nominal Capacity {W}
     PSZ-AC:2_Unitary_PackageHeatCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC:2 Supply Equipment Outlet Node;  !- Air Outlet Node Name
 
@@ -1898,7 +1898,7 @@
     PSZ-AC:3_Unitary_Package_HeatCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
     0.8,                     !- Gas Burner Efficiency
-    34385.12624,                !- Nominal Capacity {W} AUTOSIZE
+    AUTOSIZE,                !- Nominal Capacity {W}
     PSZ-AC:3_Unitary_PackageHeatCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC:3 Supply Equipment Outlet Node;  !- Air Outlet Node Name
 
@@ -1906,17 +1906,17 @@
     PSZ-AC:4_Unitary_Package_HeatCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
     0.8,                     !- Gas Burner Efficiency
-    26106.23344,                !- Nominal Capacity {W} AUTOSIZE
+    AUTOSIZE,                !- Nominal Capacity {W}
     PSZ-AC:4_Unitary_PackageHeatCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC:4 Supply Equipment Outlet Node;  !- Air Outlet Node Name
 
   Coil:Cooling:DX:SingleSpeed,
     PSZ-AC:1_Unitary_Package_CoolCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
-    35646.30534,                !- Gross Rated Total Cooling Capacity {W} AUTOSIZE
-    0.67608,                !- Gross Rated Sensible Heat Ratio AUTOSIZE
+    AUTOSIZE,                !- Gross Rated Total Cooling Capacity {W}
+    AUTOSIZE,                !- Gross Rated Sensible Heat Ratio
     3.50015986358308,        !- Gross Rated Cooling COP {W/W}
-    1.43548,                !- Rated Air Flow Rate {m3/s}
+    AUTOSIZE,                !- Rated Air Flow Rate {m3/s}
     ,                        !- Rated Evaporator Fan Power Per Volume Flow Rate {W/(m3/s)}
     PSZ-AC:1_Unitary_PackageCoolCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC:1_Unitary_PackageHeatCoil air inlet,  !- Air Outlet Node Name
@@ -1929,10 +1929,10 @@
   Coil:Cooling:DX:SingleSpeed,
     PSZ-AC:2_Unitary_Package_CoolCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
-    138445.04948,                !- Gross Rated Total Cooling Capacity {W} AUTOSIZE
-    0.67608,                !- Gross Rated Sensible Heat Ratio AUTOSIZE
+    AUTOSIZE,                !- Gross Rated Total Cooling Capacity {W}
+    AUTOSIZE,                !- Gross Rated Sensible Heat Ratio
     3.23372055845678,        !- Gross Rated Cooling COP {W/W}
-    5.57518,                !- Rated Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Rated Air Flow Rate {m3/s}
     ,                        !- Rated Evaporator Fan Power Per Volume Flow Rate {W/(m3/s)}
     PSZ-AC:2_Unitary_PackageCoolCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC:2_Unitary_PackageHeatCoil air inlet,  !- Air Outlet Node Name
@@ -1945,10 +1945,10 @@
   Coil:Cooling:DX:SingleSpeed,
     PSZ-AC:3_Unitary_Package_CoolCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
-    25729.44448,                !- Gross Rated Total Cooling Capacity {W} AUTOSIZE
-    0.67608,                !- Gross Rated Sensible Heat Ratio AUTOSIZE
+    AUTOSIZE,                !- Gross Rated Total Cooling Capacity {W}
+    AUTOSIZE,                !- Gross Rated Sensible Heat Ratio
     3.66668442928701,        !- Gross Rated Cooling COP {W/W}
-    1.03612,                !- Rated Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Rated Air Flow Rate {m3/s}
     ,                        !- Rated Evaporator Fan Power Per Volume Flow Rate {W/(m3/s)}
     PSZ-AC:3_Unitary_PackageCoolCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC:3_Unitary_PackageHeatCoil air inlet,  !- Air Outlet Node Name
@@ -1961,10 +1961,10 @@
   Coil:Cooling:DX:SingleSpeed,
     PSZ-AC:4_Unitary_Package_CoolCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
-    16574.46164,                !- Gross Rated Total Cooling Capacity {W} AUTOSIZE
-    0.67608,                !- Gross Rated Sensible Heat Ratio AUTOSIZE
+    AUTOSIZE,                !- Gross Rated Total Cooling Capacity {W}
+    AUTOSIZE,                !- Gross Rated Sensible Heat Ratio
     3.66668442928701,        !- Gross Rated Cooling COP {W/W}
-    0.66745,                !- Rated Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Rated Air Flow Rate {m3/s}
     ,                        !- Rated Evaporator Fan Power Per Volume Flow Rate {W/(m3/s)}
     PSZ-AC:4_Unitary_PackageCoolCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC:4_Unitary_PackageHeatCoil air inlet,  !- Air Outlet Node Name
@@ -1978,7 +1978,7 @@
     Front_Entry Unit Heater coil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
     1.0,                     !- Efficiency
-    2640.16993,                !- Nominal Capacity {W} AUTOSIZE
+    AUTOSIZE,                !- Nominal Capacity {W}
     Front_Entry Unit Heater Post Fan Node,  !- Air Inlet Node Name
     Front_Entry Unit Heater Inlet Node Name;  !- Air Outlet Node Name
 
@@ -1989,11 +1989,11 @@
     Front_Entry Unit Heater Inlet Node Name,  !- Air Outlet Node Name
     Fan:ConstantVolume,      !- Supply Air Fan Object Type
     Front_Entry Unit HeaterFan,  !- Supply Air Fan Name
-    0.11582,                !- Maximum Supply Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Supply Air Flow Rate {m3/s}
     OnOff,                   !- Fan Control Type
     Coil:Heating:Electric,   !- Heating Coil Object Type
     Front_Entry Unit Heater coil,  !- Heating Coil Name
-    0.11582,                 !- Maximum Hot Water or Steam Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Hot Water or Steam Flow Rate {m3/s}
     0.0,                     !- Minimum Hot Water or Steam Flow Rate {m3/s}
     0.001,                   !- Heating Convergence Tolerance
     ;                        !- Availability Manager List Name
@@ -2384,8 +2384,8 @@
     PSZ-AC:1 Supply Equipment Inlet Node,  !- Return Air Node Name
     PSZ-AC:1_OA-PSZ-AC:1_Unitary_PackageNode,  !- Mixed Air Node Name
     PSZ-AC:1_OAInlet Node,   !- Actuator Node Name
-    0.28492,                !- Minimum Outdoor Air Flow Rate {m3/s} AUTOSIZE
-    1.43548,                !- Maximum Outdoor Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Minimum Outdoor Air Flow Rate {m3/s}
+    AUTOSIZE,                !- Maximum Outdoor Air Flow Rate {m3/s}
     NoEconomizer,            !- Economizer Control Type
     ModulateFlow,            !- Economizer Control Action Type
     28.0,                    !- Economizer Maximum Limit Dry-Bulb Temperature {C}
@@ -2406,8 +2406,8 @@
     PSZ-AC:2 Supply Equipment Inlet Node,  !- Return Air Node Name
     PSZ-AC:2_OA-PSZ-AC:2_Unitary_PackageNode,  !- Mixed Air Node Name
     PSZ-AC:2_OAInlet Node,   !- Actuator Node Name
-    2.40072,                !- Minimum Outdoor Air Flow Rate {m3/s} AUTOSIZE
-    5.57518,                !- Maximum Outdoor Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Minimum Outdoor Air Flow Rate {m3/s}
+    AUTOSIZE,                !- Maximum Outdoor Air Flow Rate {m3/s}
     DifferentialDryBulb,     !- Economizer Control Type
     ModulateFlow,            !- Economizer Control Action Type
     28.0,                    !- Economizer Maximum Limit Dry-Bulb Temperature {C}
@@ -2428,8 +2428,8 @@
     PSZ-AC:3 Supply Equipment Inlet Node,  !- Return Air Node Name
     PSZ-AC:3_OA-PSZ-AC:3_Unitary_PackageNode,  !- Mixed Air Node Name
     PSZ-AC:3_OAInlet Node,   !- Actuator Node Name
-    0.22622,                !- Minimum Outdoor Air Flow Rate {m3/s} AUTOSIZE
-    1.03612,                !- Maximum Outdoor Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Minimum Outdoor Air Flow Rate {m3/s}
+    AUTOSIZE,                !- Maximum Outdoor Air Flow Rate {m3/s}
     NoEconomizer,            !- Economizer Control Type
     ModulateFlow,            !- Economizer Control Action Type
     28.0,                    !- Economizer Maximum Limit Dry-Bulb Temperature {C}
@@ -2450,8 +2450,8 @@
     PSZ-AC:4 Supply Equipment Inlet Node,  !- Return Air Node Name
     PSZ-AC:4_OA-PSZ-AC:4_Unitary_PackageNode,  !- Mixed Air Node Name
     PSZ-AC:4_OAInlet Node,   !- Actuator Node Name
-    0.22622,                !- Minimum Outdoor Air Flow Rate {m3/s} AUTOSIZE
-    0.22622,                !- Maximum Outdoor Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Minimum Outdoor Air Flow Rate {m3/s}
+    AUTOSIZE,                !- Maximum Outdoor Air Flow Rate {m3/s}
     NoEconomizer,            !- Economizer Control Type
     ModulateFlow,            !- Economizer Control Action Type
     28.0,                    !- Economizer Maximum Limit Dry-Bulb Temperature {C}
@@ -2625,7 +2625,7 @@
     PSZ-AC:1,                !- Name
     ,                        !- Controller List Name
     PSZ-AC:1 Availability Manager List,  !- Availability Manager List Name
-    1.43548,                !- Design Supply Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Design Supply Air Flow Rate {m3/s}
     PSZ-AC:1 Air Loop Branches,  !- Branch List Name
     ,                        !- Connector List Name
     PSZ-AC:1 Supply Equipment Inlet Node,  !- Supply Side Inlet Node Name
@@ -2637,7 +2637,7 @@
     PSZ-AC:2,                !- Name
     ,                        !- Controller List Name
     PSZ-AC:2 Availability Manager List,  !- Availability Manager List Name
-    5.57518,                !- Design Supply Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Design Supply Air Flow Rate {m3/s}
     PSZ-AC:2 Air Loop Branches,  !- Branch List Name
     ,                        !- Connector List Name
     PSZ-AC:2 Supply Equipment Inlet Node,  !- Supply Side Inlet Node Name
@@ -2649,7 +2649,7 @@
     PSZ-AC:3,                !- Name
     ,                        !- Controller List Name
     PSZ-AC:3 Availability Manager List,  !- Availability Manager List Name
-    1.03612,                !- Design Supply Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Design Supply Air Flow Rate {m3/s}
     PSZ-AC:3 Air Loop Branches,  !- Branch List Name
     ,                        !- Connector List Name
     PSZ-AC:3 Supply Equipment Inlet Node,  !- Supply Side Inlet Node Name
@@ -2661,7 +2661,7 @@
     PSZ-AC:4,                !- Name
     ,                        !- Controller List Name
     PSZ-AC:4 Availability Manager List,  !- Availability Manager List Name
-    0.66745,                !- Design Supply Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Design Supply Air Flow Rate {m3/s}
     PSZ-AC:4 Air Loop Branches,  !- Branch List Name
     ,                        !- Connector List Name
     PSZ-AC:4 Supply Equipment Inlet Node,  !- Supply Side Inlet Node Name
@@ -2675,10 +2675,10 @@
     PSZ-AC:1_OA-PSZ-AC:1_Unitary_PackageNode,  !- Unitary System Air Inlet Node Name
     PSZ-AC:1 Supply Equipment Outlet Node,  !- Unitary System Air Outlet Node Name
     HVACOperationSchd,       !- Supply Air Fan Operating Mode Schedule Name
-    40.00000,                !- Maximum Supply Air Temperature {C} AUTOSIZE
-    1.43548,                !- Supply Air Flow Rate During Cooling Operation {m3/s} AUTOSIZE
-    1.43548,                !- Supply Air Flow Rate During Heating Operation {m3/s} AUTOSIZE
-    1.43548,                !- Supply Air Flow Rate When No Cooling or Heating is Needed {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Supply Air Temperature {C}
+    AUTOSIZE,                !- Supply Air Flow Rate During Cooling Operation {m3/s}
+    AUTOSIZE,                !- Supply Air Flow Rate During Heating Operation {m3/s}
+    AUTOSIZE,                !- Supply Air Flow Rate When No Cooling or Heating is Needed {m3/s}
     Back_Space,              !- Controlling Zone or Thermostat Location
     Fan:OnOff,               !- Supply Fan Object Type
     PSZ-AC:1_Unitary_Package_fan,  !- Supply Fan Name
@@ -2697,10 +2697,10 @@
     PSZ-AC:2_OA-PSZ-AC:2_Unitary_PackageNode,  !- Unitary System Air Inlet Node Name
     PSZ-AC:2 Supply Equipment Outlet Node,  !- Unitary System Air Outlet Node Name
     HVACOperationSchd,       !- Supply Air Fan Operating Mode Schedule Name
-    40.00000,                !- Maximum Supply Air Temperature {C} AUTOSIZE
-    5.57518,                !- Supply Air Flow Rate During Cooling Operation {m3/s} AUTOSIZE
-    5.57518,                !- Supply Air Flow Rate During Heating Operation {m3/s} AUTOSIZE
-    5.57518,                !- Supply Air Flow Rate When No Cooling or Heating is Needed {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Supply Air Temperature {C}
+    AUTOSIZE,                !- Supply Air Flow Rate During Cooling Operation {m3/s}
+    AUTOSIZE,                !- Supply Air Flow Rate During Heating Operation {m3/s}
+    AUTOSIZE,                !- Supply Air Flow Rate When No Cooling or Heating is Needed {m3/s}
     Core_Retail,             !- Controlling Zone or Thermostat Location
     Fan:OnOff,               !- Supply Fan Object Type
     PSZ-AC:2_Unitary_Package_fan,  !- Supply Fan Name
@@ -2719,10 +2719,10 @@
     PSZ-AC:3_OA-PSZ-AC:3_Unitary_PackageNode,  !- Unitary System Air Inlet Node Name
     PSZ-AC:3 Supply Equipment Outlet Node,  !- Unitary System Air Outlet Node Name
     HVACOperationSchd,       !- Supply Air Fan Operating Mode Schedule Name
-    40.00000,                !- Maximum Supply Air Temperature {C} AUTOSIZE
-    1.03612,                !- Supply Air Flow Rate During Cooling Operation {m3/s} AUTOSIZE
-    1.03612,                !- Supply Air Flow Rate During Heating Operation {m3/s} AUTOSIZE
-    1.03612,                !- Supply Air Flow Rate When No Cooling or Heating is Needed {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Supply Air Temperature {C}
+    AUTOSIZE,                !- Supply Air Flow Rate During Cooling Operation {m3/s}
+    AUTOSIZE,                !- Supply Air Flow Rate During Heating Operation {m3/s}
+    AUTOSIZE,                !- Supply Air Flow Rate When No Cooling or Heating is Needed {m3/s}
     Point_Of_Sale,           !- Controlling Zone or Thermostat Location
     Fan:OnOff,               !- Supply Fan Object Type
     PSZ-AC:3_Unitary_Package_fan,  !- Supply Fan Name
@@ -2741,10 +2741,10 @@
     PSZ-AC:4_OA-PSZ-AC:4_Unitary_PackageNode,  !- Unitary System Air Inlet Node Name
     PSZ-AC:4 Supply Equipment Outlet Node,  !- Unitary System Air Outlet Node Name
     HVACOperationSchd,       !- Supply Air Fan Operating Mode Schedule Name
-    40.00000,                !- Maximum Supply Air Temperature {C} AUTOSIZE
-    0.66745,                !- Supply Air Flow Rate During Cooling Operation {m3/s} AUTOSIZE
-    0.66745,                !- Supply Air Flow Rate During Heating Operation {m3/s} AUTOSIZE
-    0.66745,                !- Supply Air Flow Rate When No Cooling or Heating is Needed {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Supply Air Temperature {C}
+    AUTOSIZE,                !- Supply Air Flow Rate During Cooling Operation {m3/s}
+    AUTOSIZE,                !- Supply Air Flow Rate During Heating Operation {m3/s}
+    AUTOSIZE,                !- Supply Air Flow Rate When No Cooling or Heating is Needed {m3/s}
     Front_Retail,            !- Controlling Zone or Thermostat Location
     Fan:OnOff,               !- Supply Fan Object Type
     PSZ-AC:4_Unitary_Package_fan,  !- Supply Fan Name
@@ -2843,25 +2843,25 @@
     Back_Space Direct Air,   !- Name
     ALWAYS_ON,               !- Availability Schedule Name
     Back_Space Direct Air Inlet Node Name,  !- Zone Supply Air Node Name
-    1.43548;                !- Maximum Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE;                !- Maximum Air Flow Rate {m3/s}
 
   AirTerminal:SingleDuct:Uncontrolled,
     Core_Retail Direct Air,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
     Core_Retail Direct Air Inlet Node Name,  !- Zone Supply Air Node Name
-    5.57518;                !- Maximum Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE;                !- Maximum Air Flow Rate {m3/s}
 
   AirTerminal:SingleDuct:Uncontrolled,
     Front_Retail Direct Air, !- Name
     ALWAYS_ON,               !- Availability Schedule Name
     Front_Retail Direct Air Inlet Node Name,  !- Zone Supply Air Node Name
-    0.66745;                !- Maximum Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE;                !- Maximum Air Flow Rate {m3/s}
 
   AirTerminal:SingleDuct:Uncontrolled,
     Point_Of_Sale Direct Air,!- Name
     ALWAYS_ON,               !- Availability Schedule Name
     Point_Of_Sale Direct Air Inlet Node Name,  !- Zone Supply Air Node Name
-    1.03612;                !- Maximum Air Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE;                !- Maximum Air Flow Rate {m3/s}
 
   AvailabilityManagerAssignmentList,
     PSZ-AC:1 Availability Manager List,  !- Name
@@ -2933,7 +2933,7 @@
 
   Branch,
     PSZ-AC:1 Air Loop Main Branch,  !- Name
-    1.43548,                !- Maximum Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Flow Rate {m3/s}
     ,                        !- Pressure Drop Curve Name
     AirLoopHVAC:OutdoorAirSystem,  !- Component 1 Object Type
     PSZ-AC:1_OA,             !- Component 1 Name
@@ -2948,7 +2948,7 @@
 
   Branch,
     PSZ-AC:2 Air Loop Main Branch,  !- Name
-    5.57518,                !- Maximum Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Flow Rate {m3/s}
     ,                        !- Pressure Drop Curve Name
     AirLoopHVAC:OutdoorAirSystem,  !- Component 1 Object Type
     PSZ-AC:2_OA,             !- Component 1 Name
@@ -2963,7 +2963,7 @@
 
   Branch,
     PSZ-AC:3 Air Loop Main Branch,  !- Name
-    1.03612,                !- Maximum Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Flow Rate {m3/s}
     ,                        !- Pressure Drop Curve Name
     AirLoopHVAC:OutdoorAirSystem,  !- Component 1 Object Type
     PSZ-AC:3_OA,             !- Component 1 Name
@@ -2978,7 +2978,7 @@
 
   Branch,
     PSZ-AC:4 Air Loop Main Branch,  !- Name
-    0.66745,                !- Maximum Flow Rate {m3/s} AUTOSIZE
+    AUTOSIZE,                !- Maximum Flow Rate {m3/s}
     ,                        !- Pressure Drop Curve Name
     AirLoopHVAC:OutdoorAirSystem,  !- Component 1 Object Type
     PSZ-AC:4_OA,             !- Component 1 Name
